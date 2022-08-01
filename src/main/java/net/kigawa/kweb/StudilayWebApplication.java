@@ -1,9 +1,8 @@
-package net.kigawa.studilayweb;
+package net.kigawa.kweb;
 
-import net.kigawa.studilayweb.response.HelloResponse;
+import net.kigawa.kweb.response.HelloResponse;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;

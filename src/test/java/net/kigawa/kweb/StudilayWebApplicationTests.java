@@ -1,4 +1,4 @@
-package net.kigawa.studilayweb;
+package net.kigawa.kweb;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
