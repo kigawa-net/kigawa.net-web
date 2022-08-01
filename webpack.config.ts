@@ -1,12 +1,11 @@
-// pathモジュールの読み込み
-const path = require("path");
+import path from "path";
 
 module.exports = {
     // 入力ファイル設定
-    entry: './src/main/ts/app.ts',
-    devtool: 'sourcemaps',
-    cache: true,
+    entry: './src/main/ts/app.tsx',
+    devtool: 'source-map',
     mode: 'development',
+    cache: true,
     output: {
         path: __dirname,
         filename: './src/main/resources/static/built/bundle.js'
@@ -17,7 +16,7 @@ module.exports = {
         rules: [
             {
                 // ts-loaderの設定
-                test: /\.(js|ts|tsx)?$/,
+                test: /\.(ts|tsx)?$/,
                 use: "ts-loader",
                 exclude: /node_modules/
             },
@@ -37,10 +36,4 @@ module.exports = {
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".json"]
     },
-    devServer: {
-        static: {
-            directory: path.resolve(__dirname, "./dist"),
-        }
-//    contentBase: "./dist"
-    }
 };
