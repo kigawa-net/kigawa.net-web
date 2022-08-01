@@ -1,4 +1,4 @@
-# studilay-web
+# kigawa.net-web
 
 ## Requirement
 
