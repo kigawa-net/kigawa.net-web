@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.concurrent.atomic.AtomicLong;
 
 @SpringBootApplication
-@RestController
 public class StudilayWebApplication
 {
     private final AtomicLong atomicLong = new AtomicLong();

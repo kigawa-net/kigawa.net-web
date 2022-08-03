@@ -1,17 +1,17 @@
 import path from "path";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
+import WebpackRemoveEmptyScriptsPlugin from "webpack-remove-empty-scripts";
 
 module.exports = {
     // 入力ファイル設定
-    entry: './src/main/ts/app.tsx',
+    entry: {
+        bundle: './src/main/ts/bundle.tsx',
+        style: './src/main/stylesheets/style.scss',
+    },
     devtool: 'source-map',
     mode: 'development',
     cache: true,
-    output: {
-        path: __dirname,
-        filename: './src/main/resources/static/built/bundle.js'
-    },
-
-    // モジュール設定
     module: {
         rules: [
             {
@@ -21,17 +21,31 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
-                test: path.join(__dirname, '.'),
-                exclude: /(node_modules)/,
-                use: [{
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ["@babel/preset-env", "@babel/preset-react"]
-                    }
-                }]
+                test: /\.(scss|css)?$/,
+                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
             },
         ]
     },
+
+    optimization: {
+        minimizer: [
+            new CssMinimizerPlugin(),
+        ],
+    },
+
+    // モジュール設定
+    output: {
+        path: __dirname,
+        filename: './src/main/resources/static/built/[name].js'
+    },
+
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: './src/main/resources/static/built/[name].css'
+        }),
+        new WebpackRemoveEmptyScriptsPlugin({}),
+    ],
+
     // モジュール解決
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".json"]
