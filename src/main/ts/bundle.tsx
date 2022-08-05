@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import {Header} from "./base/Header";
 
 const Bundle = () => {
-    return <div>
-        <div className={"bg-black"}>
-            <p>aaaaaaa</p>
-        </div>
+    return <div className={""}>
+        <Header/>
+
     </div>
 }
 
