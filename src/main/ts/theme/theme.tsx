@@ -2,13 +2,13 @@ import React, {Context, useContext, useState} from "react";
 
 export const themes: Theme[] = [
     {
-        bg_accent: "bg-green-800",
-        bg_accent_sub: "bg-green-600",
-        bg_back: "bg-gray-100",
-        bg_element: "bg-gray-300",
-        text_accent: "text-green-900",
-        text_main: "text-black",
-        text_sub: "text-gray-400",
+        bg_accent: " bg-green-500",
+        bg_accent_sub: " bg-green-300",
+        bg_back: " bg-gray-100",
+        bg_element: " bg-gray-300",
+        text_accent: " text-green-900",
+        text_main: " text-black",
+        text_sub: " text-gray-400",
     },
 ]
 
@@ -43,6 +43,6 @@ export function setTheme(theme: Theme) {
     setThemeFunc(theme)
 }
 
-export function useTheme():Theme{
+export function useTheme(): Theme {
     return useContext(ThemeContext)
 }

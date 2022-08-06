@@ -1,4 +1,3 @@
-import path from "path";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 import WebpackRemoveEmptyScriptsPlugin from "webpack-remove-empty-scripts";
@@ -22,7 +21,12 @@ module.exports = {
             },
             {
                 test: /\.(scss|css)?$/,
-                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    "postcss-loader",
+                    "sass-loader",
+                ]
             },
         ]
     },
