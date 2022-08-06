@@ -9,8 +9,6 @@ import java.util.concurrent.atomic.AtomicLong;
 @SpringBootApplication
 public class StudilayWebApplication
 {
-    private final AtomicLong atomicLong = new AtomicLong();
-
     public static void main(String[] args)
     {
         SpringApplication.run(StudilayWebApplication.class, args);
