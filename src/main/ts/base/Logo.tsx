@@ -7,7 +7,6 @@ export const Logo = () => {
         useTheme().text_accent
         + " text-center w-32"
         + " text-xl"
-        + " ml-1 mt-1"
     }>
         <a>{siteName()}</a>
     </div>
