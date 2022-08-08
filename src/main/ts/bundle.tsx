@@ -4,6 +4,7 @@ import {ThemeProvider} from "./theme/theme";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Home} from "./component/Home";
 import {fetchJson} from "./util/util";
+import {Header} from "./component/Header";
 
 export const siteName = "kigawa.net"
 
@@ -20,6 +21,7 @@ function Bundle() {
 
     return <BrowserRouter>
         <ThemeProvider>
+            <Header rootJson={rootJson}/>
             <Routes>
                 <Route path={"/*"} element={<Home rootJson={rootJson}/>}/>
             </Routes>

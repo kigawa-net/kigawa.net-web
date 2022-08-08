@@ -13,6 +13,8 @@ public class KRestController
     @RequestMapping(value = "/api")
     public RootJson api(HttpServletRequest request)
     {
-        return new RootJson(URIUtil.generateUrl(request, "/"));
+        return new RootJson(
+                URIUtil.generateUrl(request, "/")
+        );
     }
 }

@@ -9,7 +9,6 @@ interface Prop {
 
 export function Home(props: Prop) {
     return <div className={useTheme().bg_back + " h-full"}>
-        <Header rootJson={props.rootJson}/>
         <p>aaaaa</p>
     </div>
 }
