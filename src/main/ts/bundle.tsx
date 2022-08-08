@@ -1,19 +1,34 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import ReactDOM from "react-dom";
-import {Header} from "./base/Header";
-import {ThemeProvider, useTheme} from "./theme/theme";
+import {ThemeProvider} from "./theme/theme";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {Home} from "./component/Home";
+import {fetchJson} from "./util/util";
 
-export function siteName(): string {
-    return "kigawa.net"
+export const siteName = "kigawa.net"
+export type RootJson = {
+    homeUrl: string
 }
 
-const Bundle = () => {
-    const theme = useTheme()
+function Bundle() {
+    const [rootJson, setRootJson] = useState<RootJson>(undefined)
 
-    return <ThemeProvider>
-        <div className={theme.bg_back + " h-full"}>
-            <Header/>
-        </div>
-    </ThemeProvider>
+    useEffect(() => {
+        fetchRootJson(setRootJson)
+    })
+
+    return <BrowserRouter>
+        <ThemeProvider>
+            <Routes>
+                <Route path={"/*"} element={<Home rootJson={rootJson}/>}/>
+            </Routes>
+        </ThemeProvider>
+    </BrowserRouter>
 }
+
+function fetchRootJson(setState: (state: any) => void) {
+    const url = document.getElementById("baseurl").innerText
+    fetchJson(url, setState)
+}
+
 ReactDOM.render(<Bundle/>, document.getElementById("react"))

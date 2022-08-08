@@ -3,7 +3,7 @@ import {useTheme} from "../theme/theme";
 import {Logo} from "./Logo";
 
 
-export const Header = () => {
+export function Header(props: any) {
     const theme = useTheme()
     return <div className={
         theme.bg_accent_sub
@@ -11,6 +11,6 @@ export const Header = () => {
         + " bg-opacity-70"
         + " p-1"
     }>
-        <Logo/>
+        <Logo rootJson={props.rootJson}/>
     </div>
 }

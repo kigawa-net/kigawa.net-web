@@ -26,11 +26,8 @@ export type Theme = {
     text_sub: string
 }
 
-type Props = {
-    children: any
-}
 
-export const ThemeProvider = (props: Props) => {
+export const ThemeProvider = (props: any) => {
     const [theme, setTheme] = useState(themes[0])
     setThemeFunc = setTheme
 
