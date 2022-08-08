@@ -16,7 +16,7 @@ const ThemeContext: Context<Theme> = React.createContext(themes[0])
 let setThemeFunc: (theme: Theme) => void = () => {
 }
 
-export type Theme = {
+export interface Theme {
     bg_accent: string
     bg_accent_sub: string
     bg_back: string

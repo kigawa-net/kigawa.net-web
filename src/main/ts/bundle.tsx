@@ -6,7 +6,8 @@ import {Home} from "./component/Home";
 import {fetchJson} from "./util/util";
 
 export const siteName = "kigawa.net"
-export type RootJson = {
+
+export interface RootJson {
     homeUrl: string
 }
 

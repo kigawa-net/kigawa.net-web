@@ -1,9 +1,13 @@
 import React from "react";
 import {useTheme} from "../theme/theme";
 import {Logo} from "./Logo";
+import {RootJson} from "../bundle";
 
+interface Prop {
+    rootJson: RootJson
+}
 
-export function Header(props: any) {
+export function Header(props: Prop) {
     const theme = useTheme()
     return <div className={
         theme.bg_accent_sub
