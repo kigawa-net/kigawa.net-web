@@ -10,7 +10,8 @@ interface Prop {
 export function Home(props: Prop) {
     const homeJson: HomeJson = useRest(
         props.rootJson.homeRest,
-        getHomeJson(),
+        // "http://127.0.0.1:8080/api/home",
+        getHomeJson,
     )
 
     return <div className={useTheme().bg_back}>

@@ -12,7 +12,7 @@ export const siteName = "kigawa.net"
 function Bundle() {
     const rootJson: RootJson = useRest(
         document.getElementById("baseurl").innerText,
-        getRootJson(),
+        getRootJson,
     )
 
     return <BrowserRouter>
