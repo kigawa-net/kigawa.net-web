@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {ThemeProvider} from "./theme/theme";
+import {ThemeProvider, useTheme} from "./theme/theme";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Home} from "./component/Home";
 import {useRest} from "./util";
@@ -17,10 +17,12 @@ function Bundle() {
 
     return <BrowserRouter>
         <ThemeProvider>
-            <Header rootJson={rootJson}/>
-            <Routes>
-                <Route path={"/*"} element={<Home rootJson={rootJson}/>}/>
-            </Routes>
+            <div className={useTheme().text_main}>
+                <Header rootJson={rootJson}/>
+                <Routes>
+                    <Route path={"/*"} element={<Home rootJson={rootJson}/>}/>
+                </Routes>
+            </div>
         </ThemeProvider>
     </BrowserRouter>
 }

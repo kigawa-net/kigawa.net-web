@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 
 export function fetchJson(url: string, setState: (state: any) => void, onErr: (err: any) => void = () => {
 }) {
