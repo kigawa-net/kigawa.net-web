@@ -1,7 +1,7 @@
 import React from "react";
 import {useTheme} from "../theme/theme";
 import {Logo} from "./Logo";
-import {RootJson} from "../bundle";
+import {RootJson} from "../Json";
 
 interface Prop {
     rootJson: RootJson

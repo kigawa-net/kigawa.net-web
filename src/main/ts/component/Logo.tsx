@@ -1,20 +1,19 @@
 import React from "react";
-import {RootJson, siteName} from "../bundle";
 import {useTheme} from "../theme/theme";
 import {Link} from "react-router-dom";
+import {RootJson} from "../Json";
+import {siteName} from "../bundle";
 
 interface Prop {
     rootJson: RootJson
 }
 
 export function Logo(props: Prop) {
-    const url = props.rootJson ? props.rootJson.homeUrl : ""
-
     return <div className={
         useTheme().text_accent
         + " text-center w-32"
         + " text-xl"
     }>
-        <Link to={url}>{siteName}</Link>
+        <Link to={props.rootJson.homePage}>{siteName}</Link>
     </div>
 }
