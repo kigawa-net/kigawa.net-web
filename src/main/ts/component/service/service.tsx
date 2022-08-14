@@ -1,14 +1,14 @@
 import React from "react";
-import {getServiceJson, ServiceJson, ServicesJson} from "../../json";
+import {initServiceJson, ServiceJson, ServicesJson} from "../../json";
 import {useRest} from "../../util";
 import {Link} from "react-router-dom";
-import {useSitemap} from "../../rootJson";
+import {useRootJson} from "../../rootJson";
 
 interface Prop {
 }
 
 export function Service(prop: Prop) {
-    const servicesJson: ServicesJson = useRest(useSitemap().sitemap.servicesRest, getServiceJson)
+    const servicesJson: ServicesJson = useRest(useRootJson().sitemap.servicesRest, initServiceJson)
     const services = servicesJson.services.map((serviceJson: ServiceJson) => {
         return <div className={"w-16 h-16"}>
             <Link to={serviceJson.servicePage}>

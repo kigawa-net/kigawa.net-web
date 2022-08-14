@@ -3,7 +3,7 @@ export interface TopJson {
     topImg: string
 }
 
-export function getTopJson(): TopJson {
+export function initTopJson(): TopJson {
     return {
         topImg: ""
     }
@@ -13,7 +13,7 @@ export interface ServicesJson {
     services: ServiceJson[]
 }
 
-export function getServiceJson(): ServicesJson {
+export function initServiceJson(): ServicesJson {
     return {
         services: []
     }

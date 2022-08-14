@@ -1,17 +1,17 @@
 import {useTheme} from "../../theme";
 import React from "react";
-import {getTopJson, TopJson} from "../../json";
+import {initTopJson, TopJson} from "../../json";
 import {useRest} from "../../util";
 import {siteName} from "../../bundle";
-import {useSitemap} from "../../rootJson";
+import {useRootJson} from "../../rootJson";
 
 interface Prop {
 }
 
 export function Top(props: Prop) {
     const topJson: TopJson = useRest(
-        useSitemap().sitemap.topRest,
-        getTopJson,
+        useRootJson().sitemap.topRest,
+        initTopJson,
     )
 
     return <div className={useTheme().bg_back}>

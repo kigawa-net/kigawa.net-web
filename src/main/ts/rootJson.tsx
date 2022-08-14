@@ -2,32 +2,37 @@ import React, {Context, useContext, useEffect, useState} from "react";
 import {fetchJson} from "./util";
 
 export interface RootJson {
-    sitemap: Sitemap
+    sitemap: Page[]
 }
 
-function getRootJson(): RootJson {
+function initRootJson(): RootJson {
     return {
-        sitemap: getSitemap()
+        sitemap: []
     }
 }
 
-export interface Sitemap {
-    topPage: string
-    topRest: string
-    servicesPage: string
-    servicesRest: string
+export interface Page {
+    name: string
+    pageUrl: string
+    restUrl: string
 }
 
-function getSitemap(): Sitemap {
+function initPage(): Page {
     return {
-        topRest: "",
-        topPage: "",
-        servicesPage: "",
-        servicesRest: "",
+        name: "",
+        pageUrl: "",
+        restUrl: ""
     }
 }
 
-const RootJsonContext: Context<RootJson> = React.createContext(getRootJson())
+export function getPage(name: string): Page {
+    const page = useRootJson().sitemap.find((value) => value.name == name)
+    if (page) return page
+    return initPage()
+}
+
+
+const RootJsonContext: Context<RootJson> = React.createContext(initRootJson())
 let setRootJson: (rootJson: RootJson) => void = () => {
 }
 
@@ -40,7 +45,7 @@ export async function fetchRootJson() {
 }
 
 export function RootJsonProvider(props: any) {
-    const [rootJson, setState] = useState(getRootJson)
+    const [rootJson, setState] = useState(initRootJson)
     setRootJson = setState
     useEffect(() => {
         fetchRootJson().then()
@@ -52,6 +57,6 @@ export function RootJsonProvider(props: any) {
     </RootJsonContext.Provider>
 }
 
-export function useSitemap(): RootJson {
+export function useRootJson(): RootJson {
     return useContext(RootJsonContext)
 }
