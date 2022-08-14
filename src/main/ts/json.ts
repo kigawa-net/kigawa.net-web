@@ -1,18 +1,3 @@
-export interface RootJson {
-    topPage: string
-    topRest: string
-    servicesPage: string
-    servicesRest: string
-}
-
-export function getRootJson(): RootJson {
-    return {
-        topRest: "",
-        topPage: "",
-        servicesPage: "",
-        servicesRest: "",
-    }
-}
 
 export interface TopJson {
     topImg: string

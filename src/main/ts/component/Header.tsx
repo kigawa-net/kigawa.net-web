@@ -1,10 +1,8 @@
 import React from "react";
 import {useTheme} from "../theme";
 import {Logo} from "./Logo";
-import {RootJson} from "../json";
 
 interface Prop {
-    rootJson: RootJson
 }
 
 export function Header(props: Prop) {
@@ -15,6 +13,6 @@ export function Header(props: Prop) {
         + " bg-opacity-70"
         + " p-1"
     }>
-        <Logo rootJson={props.rootJson}/>
+        <Logo/>
     </div>
 }

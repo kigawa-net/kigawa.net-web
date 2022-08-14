@@ -1,16 +1,16 @@
 import {useTheme} from "../../theme";
 import React from "react";
-import {getTopJson, TopJson, RootJson} from "../../json";
+import {getTopJson, TopJson} from "../../json";
 import {useRest} from "../../util";
 import {siteName} from "../../bundle";
+import {useSitemap} from "../../rootJson";
 
 interface Prop {
-    rootJson: RootJson
 }
 
 export function Top(props: Prop) {
     const topJson: TopJson = useRest(
-        props.rootJson.topRest,
+        useSitemap().sitemap.topRest,
         getTopJson,
     )
 
@@ -18,7 +18,7 @@ export function Top(props: Prop) {
         <div className={"pb-1"}>
             <img src={topJson.topImg} className={""}/>
             <p className={
-                "mt-16 mb-16 w-full text-5xl text-center"+useTheme().text_accent
+                "mt-16 mb-16 w-full text-5xl text-center" + useTheme().text_accent
             }>{siteName}</p>
         </div>
     </div>

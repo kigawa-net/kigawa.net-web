@@ -1,11 +1,10 @@
 import React from "react";
 import {useTheme} from "../theme";
 import {Link} from "react-router-dom";
-import {RootJson} from "../json";
 import {siteName} from "../bundle";
+import {useSitemap} from "../rootJson";
 
 interface Prop {
-    rootJson: RootJson
 }
 
 export function Logo(props: Prop) {
@@ -14,6 +13,6 @@ export function Logo(props: Prop) {
         + " text-center w-32"
         + " text-xl"
     }>
-        <Link to={props.rootJson.topPage}>{siteName}</Link>
+        <Link to={useSitemap().sitemap.topPage}>{siteName}</Link>
     </div>
 }
