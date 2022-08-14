@@ -4,7 +4,7 @@ import {ThemeProvider, useTheme} from "./theme";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Top} from "./component/service/Top";
 import {Header} from "./component/Header";
-import {RootJsonProvider} from "./rootJson";
+import {RootJsonProvider} from "./response/rootJson";
 
 export const siteName = "kigawa.net"
 

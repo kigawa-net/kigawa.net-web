@@ -1,5 +1,5 @@
 import React, {Context, useContext, useEffect, useState} from "react";
-import {fetchJson} from "./util";
+import {fetchJson} from "../util";
 
 export interface RootJson {
     sitemap: Page[]
@@ -7,7 +7,7 @@ export interface RootJson {
 
 function initRootJson(): RootJson {
     return {
-        sitemap: []
+        sitemap: [initPage()]
     }
 }
 
@@ -25,7 +25,7 @@ function initPage(): Page {
     }
 }
 
-export function getPage(name: string): Page {
+export function getPageJson(name: string): Page {
     const page = useRootJson().sitemap.find((value) => value.name == name)
     if (page) return page
     return initPage()
@@ -45,14 +45,15 @@ export async function fetchRootJson() {
 }
 
 export function RootJsonProvider(props: any) {
-    const [rootJson, setState] = useState(initRootJson)
+    const [rootJson, setState] = useState<RootJson>()
     setRootJson = setState
     useEffect(() => {
         fetchRootJson().then()
     }, [setRootJson])
 
+    const rootJson1 = rootJson ? rootJson : initRootJson()
 
-    return <RootJsonContext.Provider value={rootJson}>
+    return <RootJsonContext.Provider value={rootJson1}>
         {props.children}
     </RootJsonContext.Provider>
 }

@@ -1,16 +1,16 @@
 import {useTheme} from "../../theme";
 import React from "react";
-import {initTopJson, TopJson} from "../../json";
+import {initTopJson, TopJson} from "../../response/json";
 import {useRest} from "../../util";
 import {siteName} from "../../bundle";
-import {useRootJson} from "../../rootJson";
+import {getPageJson, useRootJson} from "../../response/rootJson";
 
 interface Prop {
 }
 
 export function Top(props: Prop) {
     const topJson: TopJson = useRest(
-        useRootJson().sitemap.topRest,
+        getPageJson("top").restUrl,
         initTopJson,
     )
 
