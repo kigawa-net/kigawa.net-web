@@ -1,8 +1,9 @@
 package net.kigawa.kweb.controller;
 
-import net.kigawa.kweb.response.Home;
 import net.kigawa.kweb.response.Root;
-import net.kigawa.kweb.util.URIUtil;
+import net.kigawa.kweb.bean.URIUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,20 +11,20 @@ import javax.servlet.http.HttpServletRequest;
 @org.springframework.web.bind.annotation.RestController
 public class RestController
 {
-    @RequestMapping(value = "/api")
-    public Root api(HttpServletRequest request)
+    private final URIUtil uriUtil;
+
+    public RestController(URIUtil uriUtil)
     {
-        return new Root(
-                URIUtil.generateUrl(request, "/"),
-                URIUtil.generateUrl(request,"/api/home")
-        );
+        this.uriUtil = uriUtil;
     }
 
-    @RequestMapping(value = {"/api/home"})
-    public Home home(HttpServletRequest request)
+    @RequestMapping(value = "/api")
+    public Root api()
     {
-        return new Home(
-                URIUtil.generateUrl(request, "/img/home-top.png")
+        return new Root(
+                uriUtil.generateUrl(PageController.class, "index",
+                        Model.class),
+                uriUtil.generateUrl(HomeController.class, "top")
         );
     }
 }

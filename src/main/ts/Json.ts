@@ -10,11 +10,11 @@ export function getRootJson(): RootJson {
     }
 }
 
-export interface HomeJson {
+export interface TopJson {
     topImg: string
 }
 
-export function getHomeJson(): HomeJson{
+export function getTopJson(): TopJson{
     return {
         topImg: ""
     }
