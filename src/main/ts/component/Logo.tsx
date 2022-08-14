@@ -1,7 +1,7 @@
 import React from "react";
-import {useTheme} from "../theme/theme";
+import {useTheme} from "../theme";
 import {Link} from "react-router-dom";
-import {RootJson} from "../Json";
+import {RootJson} from "../json";
 import {siteName} from "../bundle";
 
 interface Prop {
@@ -14,6 +14,6 @@ export function Logo(props: Prop) {
         + " text-center w-32"
         + " text-xl"
     }>
-        <Link to={props.rootJson.homePage}>{siteName}</Link>
+        <Link to={props.rootJson.topPage}>{siteName}</Link>
     </div>
 }

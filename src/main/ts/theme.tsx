@@ -27,9 +27,9 @@ export interface Theme {
 }
 
 
-export const ThemeProvider = (props: any) => {
-    const [theme, setTheme] = useState(themes[0])
-    setThemeFunc = setTheme
+export function ThemeProvider(props: any) {
+    const [theme, setState] = useState(themes[0])
+    setThemeFunc = setState
 
     return <ThemeContext.Provider value={theme}>
         {props.children}

@@ -1,8 +1,8 @@
-import {useTheme} from "../theme/theme";
+import {useTheme} from "../../theme";
 import React from "react";
-import {getTopJson, TopJson, RootJson} from "../Json";
-import {useRest} from "../util";
-import {siteName} from "../bundle";
+import {getTopJson, TopJson, RootJson} from "../../json";
+import {useRest} from "../../util";
+import {siteName} from "../../bundle";
 
 interface Prop {
     rootJson: RootJson
@@ -10,7 +10,7 @@ interface Prop {
 
 export function Top(props: Prop) {
     const topJson: TopJson = useRest(
-        props.rootJson.homeRest,
+        props.rootJson.topRest,
         getTopJson,
     )
 
