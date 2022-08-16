@@ -31,7 +31,7 @@ public class Pages
         var list = new LinkedList<Page>();
         list.add(new Page(
                 "top",
-                uriUtil.generateUrl(PageController.class, "top", URIUtil.class, Model.class),
+                uriUtil.generateUrl(PageController.class, "top", Model.class),
                 uriUtil.generateUrl(ServiceController.class, "top")
         ));
         return list;
@@ -39,7 +39,6 @@ public class Pages
 
     public URI getApiRoot()
     {
-        return uriUtil.generateUrl(ApiController.class, "root", Pages.class);
+        return uriUtil.generateUrl(ApiController.class, "root");
     }
-
 }
