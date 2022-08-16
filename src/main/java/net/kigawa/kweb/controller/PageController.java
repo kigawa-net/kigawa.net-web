@@ -1,6 +1,6 @@
 package net.kigawa.kweb.controller;
 
-import net.kigawa.kweb.bean.URIUtil;
+import net.kigawa.kweb.bean.Pages;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,20 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class PageController
 {
-    private final URIUtil uriUtil;
-
-    public PageController(URIUtil uriUtil)
-    {
-        this.uriUtil = uriUtil;
-    }
-
     @RequestMapping(value = {
             "/",
             "/app/**"
     })
-    public String index(Model model)
+    public String top(Pages pages, Model model)
     {
-        var url = uriUtil.generateUrl(RestController.class, "api").toString();
+        System.out.println("get api root");
+        var url = pages.getApiRoot().toString();
         model.addAttribute("baseurl", url);
         return "index";
     }

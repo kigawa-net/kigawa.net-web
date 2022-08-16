@@ -5,14 +5,12 @@ import net.kigawa.kweb.bean.URIUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-
 @RestController
-public class HomeController
+public class ServiceController
 {
 private final URIUtil uriUtil;
 
-    public HomeController(URIUtil uriUtil)
+    public ServiceController(URIUtil uriUtil)
     {
         this.uriUtil = uriUtil;
     }

@@ -25,3 +25,27 @@ export interface ServiceJson {
     name: string
     overview: string
 }
+
+export interface RootJson {
+    sitemap: Page[]
+}
+
+export function initRootJson(): RootJson {
+    return {
+        sitemap: []
+    }
+}
+
+export interface Page {
+    name: string
+    pageUrl: string
+    restUrl: string
+}
+
+export function initPage(): Page {
+    return {
+        name: "",
+        pageUrl: "",
+        restUrl: ""
+    }
+}

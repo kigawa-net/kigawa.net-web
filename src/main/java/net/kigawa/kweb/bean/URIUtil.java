@@ -1,8 +1,6 @@
 package net.kigawa.kweb.bean;
 
 import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
@@ -11,13 +9,17 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
 
-@Component
 public class URIUtil
 {
-    @Autowired
-    private BeanFactory beanFactory;
-    @Autowired
-    private HttpServletRequest request;
+    private final BeanFactory beanFactory;
+
+    private final HttpServletRequest request;
+
+    public URIUtil(BeanFactory beanFactory, HttpServletRequest request)
+    {
+        this.beanFactory = beanFactory;
+        this.request = request;
+    }
 
     public URI generateUrl(String path)
     {

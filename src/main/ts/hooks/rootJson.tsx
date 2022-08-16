@@ -1,29 +1,6 @@
 import React, {Context, useContext, useEffect, useState} from "react";
 import {fetchJson} from "../util";
-
-export interface RootJson {
-    sitemap: Page[]
-}
-
-function initRootJson(): RootJson {
-    return {
-        sitemap: [initPage()]
-    }
-}
-
-export interface Page {
-    name: string
-    pageUrl: string
-    restUrl: string
-}
-
-function initPage(): Page {
-    return {
-        name: "",
-        pageUrl: "",
-        restUrl: ""
-    }
-}
+import {initPage, initRootJson, Page, RootJson} from "../response/json";
 
 export function getPageJson(name: string): Page {
     const page = useRootJson().sitemap.find((value) => value.name == name)
@@ -39,13 +16,14 @@ let setRootJson: (rootJson: RootJson) => void = () => {
 export async function fetchRootJson() {
     fetchJson(
         document.getElementById("baseurl").innerText,
-        setRootJson
+        setRootJson,
+        initRootJson
     )
 
 }
 
 export function RootJsonProvider(props: any) {
-    const [rootJson, setState] = useState<RootJson>()
+    const [rootJson, setState] = useState<RootJson>(initRootJson)
     setRootJson = setState
     useEffect(() => {
         fetchRootJson().then()

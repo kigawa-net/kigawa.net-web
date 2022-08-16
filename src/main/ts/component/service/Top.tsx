@@ -1,9 +1,9 @@
-import {useTheme} from "../../theme";
+import {useTheme} from "../../hooks/theme";
 import React from "react";
 import {initTopJson, TopJson} from "../../response/json";
 import {useRest} from "../../util";
 import {siteName} from "../../bundle";
-import {getPageJson, useRootJson} from "../../response/rootJson";
+import {getPageJson, useRootJson} from "../../hooks/rootJson";
 
 interface Prop {
 }

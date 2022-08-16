@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {ThemeProvider, useTheme} from "./theme";
+import {ThemeProvider, useTheme} from "./hooks/theme";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Top} from "./component/service/Top";
 import {Header} from "./component/Header";
-import {RootJsonProvider} from "./response/rootJson";
+import {RootJsonProvider} from "./hooks/rootJson";
 
 export const siteName = "kigawa.net"
 
