@@ -13,6 +13,6 @@ export function Logo(props: Prop) {
         + " text-center w-32"
         + " text-xl"
     }>
-        <Link to={getPageJson("top").pageUrl}>{siteName}</Link>
+        <Link to={getPageJson("top").pagePath}>{siteName}</Link>
     </div>
 }

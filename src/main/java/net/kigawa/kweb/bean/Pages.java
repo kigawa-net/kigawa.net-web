@@ -1,8 +1,7 @@
 package net.kigawa.kweb.bean;
 
 import net.kigawa.kweb.controller.ApiController;
-import net.kigawa.kweb.controller.PageController;
-import net.kigawa.kweb.controller.ServiceController;
+import net.kigawa.kweb.controller.AppController;
 import net.kigawa.kweb.response.Page;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,20 +25,25 @@ public class Pages
         if (uriUtil == null) throw new NullPointerException("uri util is null");
     }
 
-    public List<Page> getSitemap()
+    public List<Page> getRootSitemap()
     {
         var list = new LinkedList<Page>();
         list.add(new Page(
                 "top",
-                uriUtil.generateUrl(PageController.class, "top", URIUtil.class, Model.class),
-                uriUtil.generateUrl(ServiceController.class, "top")
+                "/",
+                uriUtil.generateUrl(AppController.class, "top", Model.class),
+                uriUtil.generateUrl(ApiController.class, "top")
+        ));
+        list.add(uriUtil.generatePage(
+                "service",
+                "/service"
         ));
         return list;
     }
 
     public URI getApiRoot()
     {
-        return uriUtil.generateUrl(ApiController.class, "root", Pages.class);
+        return uriUtil.generateUrl(ApiController.class, "root");
     }
 
 }
