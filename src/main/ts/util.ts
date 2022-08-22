@@ -1,13 +1,16 @@
 import {useEffect, useState} from "react";
 
 export function fetchJson<T = any>(url: string, setState: (state: any) => void, defaultValue: T | (() => T)) {
+    if (url == "") return
     fetch(url)
-        .then((res: Response) => res.json())
-        .then((res: any) => {
-            if (Object.keys(defaultValue) == res) setState(res)
-            console.log(res)
-
-            setState(defaultValue instanceof Function ? defaultValue() : defaultValue)
+        .then((res: Response) => {
+            if (!res.ok) {
+                setState(defaultValue instanceof Function ? defaultValue() : defaultValue)
+                return;
+            }
+            res.json().then((res) => {
+                setState(res)
+            })
         })
 }
 

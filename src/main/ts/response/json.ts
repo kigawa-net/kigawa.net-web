@@ -1,4 +1,3 @@
-
 export interface TopJson {
     topImg: string
 }
@@ -38,14 +37,16 @@ export function initRootJson(): RootJson {
 
 export interface Page {
     name: string
+    pagePath: string
     pageUrl: string
     restUrl: string
 }
 
 export function initPage(): Page {
     return {
-        name: "",
-        pageUrl: "",
+        name: "not found",
+        pagePath: "/404",
+        pageUrl: "/404",
         restUrl: ""
     }
 }
