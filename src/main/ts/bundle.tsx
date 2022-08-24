@@ -1,11 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {ThemeProvider, useTheme} from "./hooks/theme";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {Top} from "./component/service/Top";
+import {ThemeProvider} from "./hooks/theme";
+import {BrowserRouter} from "react-router-dom";
 import {Header} from "./component/Header";
-import {getPageJson, RootJsonProvider} from "./hooks/rootJson";
-import {Service} from "./component/service/service";
+import {RootJsonProvider} from "./hooks/rootJson";
 import {Contents} from "./component/Contents";
 
 export const siteName = "kigawa.net"
@@ -14,10 +12,8 @@ function Bundle() {
     return <BrowserRouter>
         <RootJsonProvider>
             <ThemeProvider>
-                <div className={useTheme().text_main}>
-                    <Header/>
-                    <Contents/>
-                </div>
+                <Header/>
+                <Contents/>
             </ThemeProvider>
         </RootJsonProvider>
     </BrowserRouter>

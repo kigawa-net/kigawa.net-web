@@ -3,7 +3,7 @@ import React, {Context, useContext, useState} from "react";
 export const themes: Theme[] = [
     {
         bg_accent: " bg-green-500",
-        bg_accent_sub: " bg-green-300",
+        bg_accent_sub: " bg-green-600",
         bg_back: " bg-gray-100",
         bg_element: " bg-gray-300",
         text_accent: " text-green-900",
@@ -32,7 +32,9 @@ export function ThemeProvider(props: any) {
     setThemeFunc = setState
 
     return <ThemeContext.Provider value={theme}>
-        {props.children}
+        <div className={useTheme().text_main}>
+            {props.children}
+        </div>
     </ThemeContext.Provider>
 }
 
