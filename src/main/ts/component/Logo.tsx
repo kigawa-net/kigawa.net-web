@@ -2,7 +2,7 @@ import React from "react";
 import {useTheme} from "../hooks/theme";
 import {Link} from "react-router-dom";
 import {siteName} from "../bundle";
-import {getPageJson, useRootJson} from "../hooks/rootJson";
+import {getPageJson} from "../hooks/rootJson";
 
 interface Prop {
 }
