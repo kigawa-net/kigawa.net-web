@@ -1,7 +1,7 @@
 import {useTheme} from "../../hooks/theme";
 import React from "react";
 import {initTopJson, TopJson} from "../../response/json";
-import {useRest} from "../../util";
+import {useRest} from "../../util/util";
 import {siteName} from "../../bundle";
 import {getPageJson, useRootJson} from "../../hooks/rootJson";
 

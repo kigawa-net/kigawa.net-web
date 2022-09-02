@@ -1,6 +1,6 @@
 import React from "react";
 import {initServiceJson, ServiceJson, ServicesJson} from "../../response/json";
-import {useRest} from "../../util";
+import {useRest} from "../../util/util";
 import {Link} from "react-router-dom";
 import {getPageJson} from "../../hooks/rootJson";
 

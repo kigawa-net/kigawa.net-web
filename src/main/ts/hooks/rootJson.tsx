@@ -1,5 +1,5 @@
 import React, {Context, useContext, useEffect, useState} from "react";
-import {fetchJson} from "../util";
+import {fetchJson} from "../util/util";
 import {initPage, initRootJson, Page, RootJson} from "../response/json";
 
 export function getPageJson(name: string): Page {
