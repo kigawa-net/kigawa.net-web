@@ -22,15 +22,7 @@ public class ApiController
     public Root root()
     {
         return new Root(
-        );
-    }
-
-
-    @RequestMapping(value = {"/api/top"})
-    public Top top()
-    {
-        return new Top(
-                uriUtil.generateUrl("/img/home-top.png")
+                uriUtil.generateUrl(ImgController.class,"images")
         );
     }
 }

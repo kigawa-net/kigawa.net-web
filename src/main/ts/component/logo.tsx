@@ -2,7 +2,6 @@ import React from "react";
 import {useTheme} from "../hooks/theme";
 import {Link} from "react-router-dom";
 import {siteName} from "../bundle";
-import {getPageJson} from "../hooks/rootJson";
 
 interface Prop {
 }
@@ -13,6 +12,6 @@ export function Logo(props: Prop) {
         + " text-center w-32"
         + " text-xl"
     }>
-        <Link to={getPageJson("top").pagePath}>{siteName}</Link>
+        <Link to={"/"}>{siteName}</Link>
     </div>
 }

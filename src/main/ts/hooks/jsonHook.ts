@@ -1,5 +1,4 @@
 import {useEffect, useState} from "react";
-import {initPage, Page} from "../response/json";
 import {useRootJson} from "./rootJson";
 
 export function fetchJson<T = any>(url: string, setState: (state: any) => void, defaultValue: T | (() => T)) {
@@ -29,8 +28,4 @@ export function useJson<T = any>(url: string, defaultValue: T | (() => T)): T {
 
     return defaultValue instanceof Function ? defaultValue() : defaultValue
 
-}
-
-export function usePage(name: string): Page {
-    return useJson(useRootJson() + name, initPage)
 }
