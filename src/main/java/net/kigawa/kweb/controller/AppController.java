@@ -1,6 +1,5 @@
 package net.kigawa.kweb.controller;
 
-import net.kigawa.kweb.bean.Pages;
 import net.kigawa.kweb.bean.URIUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,12 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AppController
 {
-    private final Pages pages;
-private final URIUtil uriUtil;
+    private final URIUtil uriUtil;
+
     @Autowired
-    public AppController(Pages pages, URIUtil uriUtil)
+    public AppController(URIUtil uriUtil)
     {
-        this.pages = pages;
         this.uriUtil = uriUtil;
     }
 
@@ -25,7 +23,8 @@ private final URIUtil uriUtil;
     })
     public String top(Model model)
     {
-        model.addAttribute("baseurl", pages.getApiRoot().toString());
+        model.addAttribute("baseurl",
+                uriUtil.generateUrl(ApiController.class, "root"));
         return "index";
     }
 }

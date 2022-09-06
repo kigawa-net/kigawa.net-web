@@ -1,6 +1,6 @@
 import React from "react";
 import {initServiceJson, ServiceJson, ServicesJson} from "../../response/json";
-import {useRest} from "../../util/util";
+import {useJson} from "../../hooks/jsonHook";
 import {Link} from "react-router-dom";
 import {getPageJson} from "../../hooks/rootJson";
 
@@ -8,7 +8,7 @@ interface Prop {
 }
 
 export function Service(prop: Prop) {
-    const servicesJson: ServicesJson = useRest(getPageJson("service").restUrl,
+    const servicesJson: ServicesJson = useJson(getPageJson("service").restUrl,
         initServiceJson)
     const services = servicesJson.services.map((serviceJson: ServiceJson) => {
         return <div className={"w-16 h-16"}>

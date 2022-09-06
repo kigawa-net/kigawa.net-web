@@ -26,12 +26,12 @@ export interface ServiceJson {
 }
 
 export interface RootJson {
-    sitemap: Page[]
+    pageUrl: string
 }
 
 export function initRootJson(): RootJson {
     return {
-        sitemap: []
+        pageUrl: ""
     }
 }
 

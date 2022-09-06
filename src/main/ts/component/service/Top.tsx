@@ -1,7 +1,7 @@
 import {useTheme} from "../../hooks/theme";
 import React from "react";
 import {initTopJson, TopJson} from "../../response/json";
-import {useRest} from "../../util/util";
+import {useJson} from "../../hooks/jsonHook";
 import {siteName} from "../../bundle";
 import {getPageJson, useRootJson} from "../../hooks/rootJson";
 
@@ -9,7 +9,7 @@ interface Prop {
 }
 
 export function Top(props: Prop) {
-    const topJson: TopJson = useRest(
+    const topJson: TopJson = useJson(
         getPageJson("top").restUrl,
         initTopJson,
     )

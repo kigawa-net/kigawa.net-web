@@ -1,9 +1,8 @@
 package net.kigawa.kweb.response;
 
-import java.util.List;
+import java.net.URI;
 
 public record Root(
-        List<Page> sitemap
 )
 {
 }

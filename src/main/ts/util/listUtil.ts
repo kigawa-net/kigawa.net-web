@@ -34,7 +34,7 @@ export class AccessOrderMap<K, V> {
 export class LimitedSizeMap<K, V> extends AccessOrderMap<K, V> {
     private readonly maxsize: number
 
-    constructor(maxsize: number = 10) {
+    constructor(maxsize: number = 50) {
         super();
         this.maxsize = maxsize
     }

@@ -1,6 +1,5 @@
 package net.kigawa.kweb.bean;
 
-import net.kigawa.kweb.response.Page;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,16 +27,6 @@ public class URIUtil
                 .fromRequestUri(request)
                 .replacePath(path)
                 .encode().build().toUri();
-    }
-
-    public Page generatePage(String name, String path)
-    {
-        return new Page(
-                name,
-                "/app" + path,
-                generateUrl("/app" + path),
-                generateUrl("/api" + path)
-        );
     }
 
     public URI generateUrl(Class<?> controller, String methodName, Class<?>... argClasses)
