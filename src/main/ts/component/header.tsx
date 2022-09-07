@@ -2,6 +2,7 @@ import React from "react";
 import {useTheme} from "../hooks/theme";
 import {Logo} from "./logo";
 import {Link} from "react-router-dom";
+import {Pages} from "./contents";
 
 interface Prop {
 }
@@ -21,7 +22,7 @@ export function Header(props: Prop) {
         <div className={" w-32 text-xl bg-opacity-70"
             + useTheme().text_accent
             + useTheme().bg_accent_sub}>
-            <Link to={"/app/service"}>
+            <Link to={Pages.service}>
                 <p>Services</p>
             </Link>
         </div>

@@ -2,6 +2,7 @@ import React from "react";
 import {useTheme} from "../hooks/theme";
 import {Link} from "react-router-dom";
 import {siteName} from "../bundle";
+import {Pages} from "./contents";
 
 interface Prop {
 }
@@ -12,6 +13,6 @@ export function Logo(props: Prop) {
         + " text-center w-32"
         + " text-xl"
     }>
-        <Link to={"/"}>{siteName}</Link>
+        <Link to={Pages.top}>{siteName}</Link>
     </div>
 }
