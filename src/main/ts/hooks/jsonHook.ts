@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import {useRootJson} from "./rootJson";
 
 export function fetchJson<T = any>(url: string, setState: (state: any) => void, defaultValue: T | (() => T)) {
     if (url == "") return
@@ -14,7 +15,7 @@ export function fetchJson<T = any>(url: string, setState: (state: any) => void, 
         })
 }
 
-export function useRest<T = any>(url: string, defaultValue: T | (() => T)): T {
+export function useJson<T = any>(url: string, defaultValue: T | (() => T)): T {
     const [restObj, setObj] = useState<T>()
 
     useEffect(() => {

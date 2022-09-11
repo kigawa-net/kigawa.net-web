@@ -1,12 +1,6 @@
 import React, {Context, useContext, useEffect, useState} from "react";
-import {fetchJson} from "../util";
-import {initPage, initRootJson, Page, RootJson} from "../response/json";
-
-export function getPageJson(name: string): Page {
-    const page = useRootJson().sitemap.find((value) => value.name == name)
-    if (page) return page
-    return initPage()
-}
+import {fetchJson} from "./jsonHook";
+import {initRootJson, RootJson} from "../response/json";
 
 
 const RootJsonContext: Context<RootJson> = React.createContext(initRootJson())
