@@ -2,11 +2,14 @@ package net.kigawa.kweb.controller;
 
 import net.kigawa.kweb.bean.URIUtil;
 import net.kigawa.kweb.response.Root;
+import net.kigawa.kweb.response.service.Services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+import java.util.HashMap;
+
+@RestController()
 public class ApiController
 {
     private final URIUtil uriUtil;
@@ -17,11 +20,18 @@ public class ApiController
         this.uriUtil = uriUtil;
     }
 
-    @RequestMapping(value = "/api")
+    @RequestMapping(value = "/api", name = "root")
     public Root root()
     {
         return new Root(
-                uriUtil.generateUrl(ImgController.class,"images")
+                uriUtil.urlFromMapping("images"),
+                uriUtil.urlFromMapping("services")
         );
+    }
+
+    @RequestMapping(value = "/api/services", name = "services")
+    public Services services()
+    {
+        return new Services(new HashMap<>());
     }
 }

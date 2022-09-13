@@ -15,11 +15,11 @@ public class ImgController
         this.uriUtil = uriUtil;
     }
 
-    @RequestMapping(value = "/images")
+    @RequestMapping(value = "/images",name = "images")
     public Images images()
     {
         return new Images(
-                uriUtil.generateUrl("/img/home-top.png")
+                uriUtil.urlFromPath("/img/home-top.png")
         );
     }
 }

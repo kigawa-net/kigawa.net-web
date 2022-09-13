@@ -1,8 +1,6 @@
 package net.kigawa.kweb.bean;
 
 import org.springframework.beans.factory.BeanFactory;
-import org.springframework.ui.Model;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -21,7 +19,7 @@ public class URIUtil
         this.request = request;
     }
 
-    public URI generateUrl(String path)
+    public URI urlFromPath(String path)
     {
         return ServletUriComponentsBuilder
                 .fromRequestUri(request)
@@ -29,20 +27,15 @@ public class URIUtil
                 .encode().build().toUri();
     }
 
-    public URI generateUrl(Class<?> controller, String methodName, Class<?>... argClasses)
+    public String urlFromMapping(String requestMapName)
     {
-        var args = new Object[argClasses.length];
-        for (int i = 0; i < argClasses.length; i++) {
-            if (argClasses[i].equals(Model.class)) {
-                args[i] = new ModelAndView().getModel();
-                continue;
-            }
-
-            args[i] = beanFactory.getBean(argClasses[i]);
-        }
-
         return MvcUriComponentsBuilder
-                .fromMethodName(controller, methodName, args)
-                .buildAndExpand().toUri();
+                .fromMappingName(requestMapName)
+                .build();
+    }
+    public String mappedUrlFromMapping(String requestMapName,Object... args){
+        var builder=MvcUriComponentsBuilder
+                .fromMappingName(requestMapName);
+       return builder.buildAndExpand(args);
     }
 }

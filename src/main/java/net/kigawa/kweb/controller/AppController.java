@@ -24,7 +24,7 @@ public class AppController
     public String top(Model model)
     {
         model.addAttribute("baseurl",
-                uriUtil.generateUrl(ApiController.class, "root"));
+                uriUtil.urlFromMapping("root"));
         return "index";
     }
 }
