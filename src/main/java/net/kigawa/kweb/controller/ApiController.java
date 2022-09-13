@@ -2,7 +2,7 @@ package net.kigawa.kweb.controller;
 
 import net.kigawa.kweb.bean.URIUtil;
 import net.kigawa.kweb.response.Root;
-import net.kigawa.kweb.response.service.Services;
+import net.kigawa.kweb.response.service.ServiceList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,8 +30,8 @@ public class ApiController
     }
 
     @RequestMapping(value = "/api/services", name = "services")
-    public Services services()
+    public ServiceList services()
     {
-        return new Services(new HashMap<>());
+        return new ServiceList(new HashMap<>());
     }
 }

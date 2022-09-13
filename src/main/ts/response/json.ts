@@ -1,12 +1,16 @@
-export interface RootJson {
-    imagesUrl: string
-    servicesUrl: string
+export type Url = string
+
+export interface Root {
+    imageList: Url
+    serviceList: Url
+    service: Url
 }
 
-export function initRootJson(): RootJson {
+export function initRoot(): Root {
     return {
-        imagesUrl: "",
-        servicesUrl: ""
+        imageList: "",
+        serviceList: "",
+        service: "",
     }
 }
 
@@ -17,11 +21,11 @@ export function initImages(): Images {
     return {}
 }
 
-export interface Services {
+export interface ServiceList {
     serviceMap: Map<string, Service>
 }
 
-export function initServices(): Services {
+export function initServiceList(): ServiceList {
     return {
         serviceMap: new Map<string, Service>()
     }

@@ -1,6 +1,6 @@
 import React, {Context, useContext, useState} from "react";
 
-export const themes: Theme[] = [
+export const themes: ThemeHook[] = [
     {
         bg_accent: " bg-green-500",
         bg_accent_sub: " bg-green-600",
@@ -12,11 +12,11 @@ export const themes: Theme[] = [
     },
 ]
 
-const ThemeContext: Context<Theme> = React.createContext(themes[0])
-let setThemeFunc: (theme: Theme) => void = () => {
+const ThemeContext: Context<ThemeHook> = React.createContext(themes[0])
+let setThemeFunc: (theme: ThemeHook) => void = () => {
 }
 
-export interface Theme {
+export interface ThemeHook {
     bg_accent: string
     bg_accent_sub: string
     bg_back: string
@@ -38,10 +38,10 @@ export function ThemeProvider(props: any) {
     </ThemeContext.Provider>
 }
 
-export function setTheme(theme: Theme) {
+export function setTheme(theme: ThemeHook) {
     setThemeFunc(theme)
 }
 
-export function useTheme(): Theme {
+export function useTheme(): ThemeHook {
     return useContext(ThemeContext)
 }

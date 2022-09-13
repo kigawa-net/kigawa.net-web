@@ -1,5 +1,5 @@
 import React from "react";
-import {useTheme} from "../hooks/theme";
+import {useTheme} from "../hooks/themeHook";
 import {Logo} from "./logo";
 import {Link} from "react-router-dom";
 import {Pages} from "./contents";
