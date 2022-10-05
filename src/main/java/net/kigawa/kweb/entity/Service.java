@@ -7,10 +7,12 @@ public class Service
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @Column(nullable = false)
     private Long id;
-    @Column(name = "strId", nullable = false, unique = true)
+    @Column(nullable = false, unique = true)
     private String strId;
+    @Column
+    private String topUrl;
 
     public Long getId()
     {
@@ -20,5 +22,25 @@ public class Service
     public void setId(Long id)
     {
         this.id = id;
+    }
+
+    public String getStrId()
+    {
+        return strId;
+    }
+
+    public void setStrId(String strId)
+    {
+        this.strId = strId;
+    }
+
+    public String getTopUrl()
+    {
+        return topUrl;
+    }
+
+    public void setTopUrl(String topUrl)
+    {
+        this.topUrl = topUrl;
     }
 }

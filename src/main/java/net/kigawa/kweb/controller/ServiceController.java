@@ -1,5 +1,6 @@
 package net.kigawa.kweb.controller;
 
+import net.kigawa.kweb.bean.URIUtil;
 import net.kigawa.kweb.entity.Service;
 import net.kigawa.kweb.repository.ServiceRepository;
 import net.kigawa.kweb.response.service.ServiceList;
@@ -14,11 +15,13 @@ import java.util.HashMap;
 public class ServiceController
 {
     private final ServiceRepository serviceRepository;
+    private final URIUtil uriUtil;
 
     @Autowired
-    public ServiceController(ServiceRepository serviceRepository)
+    public ServiceController(ServiceRepository serviceRepository, URIUtil uriUtil)
     {
         this.serviceRepository = serviceRepository;
+        this.uriUtil = uriUtil;
     }
 
     @RequestMapping(value = "/api/services", name = "serviceList")
@@ -27,10 +30,13 @@ public class ServiceController
         return new ServiceList(new HashMap<>());
     }
 
-    @RequestMapping(value = "/api/service/{id}",name = "service")
-    public Service service(@PathVariable long id)
+    @RequestMapping(value = "/api/service/{strId}", name = "service")
+    public Service service(@PathVariable String strId)
     {
-        var service = serviceRepository.findById(id);
-        return service.orElseGet(Service::new);
+        var service = uriUtil.getServiceIfExists(strId);
+        if (service != null) return service;
+
+
+        return new Service();
     }
 }

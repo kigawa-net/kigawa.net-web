@@ -1,5 +1,6 @@
 package net.kigawa.kweb.bean;
 
+import net.kigawa.kweb.entity.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
@@ -43,5 +44,20 @@ public class URIUtil
         var values = annotation.value();
         if (values.length == 0) throw new RuntimeException("rout not found");
         return values[0];
+    }
+
+    public Service getServiceIfExists(String strId)
+    {
+        var service = new Service();
+        switch (strId) {
+            case "top" -> {
+                service.setStrId("top");
+                service.setTopUrl(urlFromPath("/img/home-top.png").toString());
+                return service;
+            }
+            default -> {
+                return null;
+            }
+        }
     }
 }
