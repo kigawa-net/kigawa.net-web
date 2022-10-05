@@ -1,11 +1,11 @@
 package net.kigawa.kweb;
 
 import net.kigawa.kweb.bean.URIUtil;
-import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,8 +14,8 @@ public class WebConfig implements WebMvcConfigurer
 {
     @Bean
     @Autowired
-    public URIUtil uriUtil(BeanFactory beanFactory, HttpServletRequest request)
+    public URIUtil uriUtil(HttpServletRequest request, RequestMappingHandlerMapping handlerMapping)
     {
-        return new URIUtil(beanFactory, request);
+        return new URIUtil(request, handlerMapping);
     }
 }
