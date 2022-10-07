@@ -34,11 +34,13 @@ export function initServiceList(): ServiceList {
 export interface Service {
     topImg: string
     title: string
+    strId: string
 }
 
 export function initService(): Service {
     return {
         topImg: "",
         title: "",
+        strId: "",
     }
 }
