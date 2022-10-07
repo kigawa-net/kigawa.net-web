@@ -1,5 +1,6 @@
 package net.kigawa.kweb.bean;
 
+import net.kigawa.kweb.Kweb;
 import net.kigawa.kweb.entity.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
@@ -7,36 +8,31 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
-import java.net.URI;
 
 public class URIUtil
 {
     private final HttpServletRequest request;
     private final RequestMappingHandlerMapping handlerMapping;
 
-    public URIUtil(HttpServletRequest request, RequestMappingHandlerMapping handlerMapping)
-    {
+    public URIUtil(HttpServletRequest request, RequestMappingHandlerMapping handlerMapping) {
         this.request = request;
         this.handlerMapping = handlerMapping;
     }
 
-    public URI urlFromPath(String path)
-    {
+    public String urlFromPath(String path) {
         return ServletUriComponentsBuilder
                 .fromRequestUri(request)
                 .replacePath(path)
-                .encode().build().toUri();
+                .encode().build().toUriString();
     }
 
-    public String urlFromMapping(String requestMapName, Object... args)
-    {
+    public String urlFromMapping(String requestMapName, Object... args) {
         var builder = MvcUriComponentsBuilder
                 .fromMappingName(requestMapName);
-        return builder.buildAndExpand(args);
+        return builder.build();
     }
 
-    public String getUrlTemplate(String requestMapName, Object... args)
-    {
+    public String getUrlTemplate(String requestMapName, Object... args) {
         var methods = handlerMapping.getHandlerMethodsForMappingName(requestMapName);
         if (methods == null || methods.size() == 0) throw new RuntimeException("mapping not found");
         var annotation = methods.get(0).getMethodAnnotation(RequestMapping.class);
@@ -46,13 +42,13 @@ public class URIUtil
         return values[0];
     }
 
-    public Service getServiceIfExists(String strId)
-    {
+    public Service getServiceIfExists(String strId) {
         var service = new Service();
         switch (strId) {
             case "top" -> {
                 service.setStrId("top");
-                service.setTopUrl(urlFromPath("/img/home-top.png").toString());
+                service.setTopImg(urlFromPath("/img/home-top.png").toString());
+                service.setTitle(Kweb.SERVICE_NAME);
                 return service;
             }
             default -> {

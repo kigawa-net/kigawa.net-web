@@ -6,8 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Kweb
 {
-    public static void main(String[] args)
-    {
+    public static final String SERVICE_NAME = "kigawa.net";
+
+    public static void main(String[] args) {
         SpringApplication.run(Kweb.class, args);
     }
 }

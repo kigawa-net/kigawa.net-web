@@ -12,7 +12,18 @@ public class Service
     @Column(nullable = false, unique = true)
     private String strId;
     @Column
-    private String topUrl;
+    private String topImg;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    @Column
+    private String title;
 
     public Long getId()
     {
@@ -34,13 +45,13 @@ public class Service
         this.strId = strId;
     }
 
-    public String getTopUrl()
+    public String getTopImg()
     {
-        return topUrl;
+        return topImg;
     }
 
-    public void setTopUrl(String topUrl)
+    public void setTopImg(String topUrl)
     {
-        this.topUrl = topUrl;
+        this.topImg = topUrl;
     }
 }

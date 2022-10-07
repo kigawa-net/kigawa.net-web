@@ -6,7 +6,7 @@ import {initServiceList} from "../../response/json";
 interface Prop {
 }
 
-export function Services(prop: Prop) {
+export function ServiceList(prop: Prop) {
     const services = useJson(useRootJson().serviceList, initServiceList)
 
     const elements: JSX.Element[] = []

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 @RestController
 public class ServiceController
@@ -27,7 +27,13 @@ public class ServiceController
     @RequestMapping(value = "/api/services", name = "serviceList")
     public ServiceList serviceList()
     {
-        return new ServiceList(new HashMap<>());
+        var map = new LinkedHashMap<String, Service>();
+
+        for (var service : serviceRepository.findAll()) {
+            map.put(service.getStrId(), service);
+        }
+
+        return new ServiceList(map);
     }
 
     @RequestMapping(value = "/api/service/{strId}", name = "service")
@@ -36,6 +42,9 @@ public class ServiceController
         var service = uriUtil.getServiceIfExists(strId);
         if (service != null) return service;
 
+        for (var service1 : serviceRepository.findAll()) {
+            if (service1.getStrId().equals(strId)) return service1;
+        }
 
         return new Service();
     }
