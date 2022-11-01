@@ -38,7 +38,6 @@ public class ServiceController
 
         list.addAll(serviceDefine.getServiceList());
 
-        System.out.println(list);
         return new ServiceList(list);
     }
 

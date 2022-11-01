@@ -12,7 +12,7 @@ export function ServiceList(prop: Prop) {
     const elements: JSX.Element[] = []
 
     for (const service of services.serviceList) {
-        elements.push(<div className={""}>
+        elements.push(<div className={""} key={service.strId}>
             {service.title}
         </div>)
     }
