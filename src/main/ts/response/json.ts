@@ -22,12 +22,12 @@ export function initImages(): Images {
 }
 
 export interface ServiceList {
-    serviceMap: Map<string, Service>
+    serviceList:  Service[]
 }
 
 export function initServiceList(): ServiceList {
     return {
-        serviceMap: new Map<string, Service>()
+        serviceList: []
     }
 }
 

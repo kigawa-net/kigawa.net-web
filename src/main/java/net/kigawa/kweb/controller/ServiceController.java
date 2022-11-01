@@ -1,5 +1,6 @@
 package net.kigawa.kweb.controller;
 
+import net.kigawa.kweb.bean.ServiceDefine;
 import net.kigawa.kweb.bean.URIUtil;
 import net.kigawa.kweb.entity.Service;
 import net.kigawa.kweb.repository.ServiceRepository;
@@ -9,37 +10,42 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.LinkedHashMap;
+import java.util.LinkedList;
 
 @RestController
 public class ServiceController
 {
     private final ServiceRepository serviceRepository;
     private final URIUtil uriUtil;
+    private final ServiceDefine serviceDefine;
 
     @Autowired
-    public ServiceController(ServiceRepository serviceRepository, URIUtil uriUtil)
+    public ServiceController(ServiceRepository serviceRepository, URIUtil uriUtil, ServiceDefine serviceDefine)
     {
         this.serviceRepository = serviceRepository;
         this.uriUtil = uriUtil;
+        this.serviceDefine = serviceDefine;
     }
 
     @RequestMapping(value = "/api/services", name = "serviceList")
     public ServiceList serviceList()
     {
-        var map = new LinkedHashMap<String, Service>();
+        var list = new LinkedList<Service>();
 
         for (var service : serviceRepository.findAll()) {
-            map.put(service.getStrId(), service);
+            list.add( service);
         }
 
-        return new ServiceList(map);
+        list.addAll(serviceDefine.getServiceList());
+
+        System.out.println(list);
+        return new ServiceList(list);
     }
 
     @RequestMapping(value = "/api/service/{strId}", name = "service")
     public Service service(@PathVariable String strId)
     {
-        var service = uriUtil.getServiceIfExists(strId);
+        var service = serviceDefine.getService(strId);
         if (service != null) return service;
 
         for (var service1 : serviceRepository.findAll()) {

@@ -1,9 +1,13 @@
 import {useEffect, useState} from "react";
-import {useRootJson} from "./rootJsonHook";
 import {Url} from "../response/json";
+import {debug} from "../bundle";
 
 export function fetchJson<T = any>(url: string, setState: (state: any) => void, defaultValue: T | (() => T)) {
     if (url == "") return
+    if (url.indexOf("://") != -1) {
+        const urlHead = window.location.href.split("://")[0]
+        url = urlHead + "://" + url.split("://")[0]
+    }
     fetch(url)
         .then((res: Response) => {
             if (!res.ok) {
@@ -11,6 +15,7 @@ export function fetchJson<T = any>(url: string, setState: (state: any) => void, 
                 return;
             }
             res.json().then((res) => {
+                if (debug) console.log(res)
                 setState(res)
             })
         })

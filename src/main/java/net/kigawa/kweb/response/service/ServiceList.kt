@@ -1,11 +1,7 @@
-package net.kigawa.kweb.response.service;
+package net.kigawa.kweb.response.service
 
-import net.kigawa.kweb.entity.Service;
+import net.kigawa.kweb.entity.Service
 
-import java.util.Map;
-
-public record ServiceList(
-        Map<String, Service> serviceMap
+class ServiceList(
+    val serviceList: MutableList<Service>
 )
-{
-}

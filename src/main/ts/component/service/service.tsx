@@ -8,7 +8,7 @@ interface Prop {
 
 export function Service(prop: Prop) {
     const service = useService(prop.strId)
-    console.log(service)
+
     return <div className={useTheme().bg_back}>
         <div className={"pb-1"}>
             <img src={service.topImg} className={""} alt="top img"/>

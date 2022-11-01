@@ -42,18 +42,4 @@ public class URIUtil
         return values[0];
     }
 
-    public Service getServiceIfExists(String strId) {
-        var service = new Service();
-        switch (strId) {
-            case "top" -> {
-                service.setStrId("top");
-                service.setTopImg(urlFromPath("/img/home-top.png").toString());
-                service.setTitle(Kweb.SERVICE_NAME);
-                return service;
-            }
-            default -> {
-                return null;
-            }
-        }
-    }
 }

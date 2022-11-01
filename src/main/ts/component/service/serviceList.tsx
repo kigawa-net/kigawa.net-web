@@ -11,8 +11,9 @@ export function ServiceList(prop: Prop) {
 
     const elements: JSX.Element[] = []
 
-    for (const service of services.serviceMap) {
+    for (const service of services.serviceList) {
         elements.push(<div className={""}>
+            {service.title}
         </div>)
     }
 
