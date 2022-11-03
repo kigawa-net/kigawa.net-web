@@ -1,9 +1,7 @@
-package net.kigawa.kweb.response;
+package net.kigawa.kweb.response
 
-import java.net.URI;
+import java.net.URL
 
-public record ImageList(
-        String topImg
+class ImageList(
+    val topImg: URL
 )
-{
-}

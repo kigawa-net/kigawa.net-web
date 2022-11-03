@@ -7,7 +7,7 @@ export const themes: ThemeHook[] = [
         bg_back: " bg-gray-100",
         bg_element: " bg-gray-300",
         text_accent: " text-green-900",
-        text_main: " text-black",
+        text_main: " text-green-900",
         text_sub: " text-gray-400",
     },
 ]

@@ -9,12 +9,12 @@ interface Prop {
 export function Service(prop: Prop) {
     const service = useService(prop.strId)
 
-    return <div className={useTheme().bg_back}>
-        <div className={"pb-1"}>
-            <img src={service.topImg} className={""} alt="top img"/>
-            <p className={
-                "mt-16 mb-16 w-full text-5xl text-center" + useTheme().text_accent
-            }>{service.title}</p>
+    return <div className={useTheme().bg_back+" pt-40"}
+                style={{backgroundImage: "url(" + service.topImg + ")"}}>
+        <div className={""}>
+            <h1 className={
+                "mb-16 w-full text-7xl text-center" + useTheme().text_accent
+            }>{service.title}</h1>
         </div>
     </div>
 }

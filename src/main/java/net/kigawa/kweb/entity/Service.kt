@@ -1,57 +1,38 @@
-package net.kigawa.kweb.entity;
+package net.kigawa.kweb.entity
 
-import javax.persistence.*;
+import java.net.URL
+import javax.persistence.*
 
 @Entity
-public class Service
+class Service
 {
+    companion object
+    {
+        fun create(strId: String, topImg: URL, title: String, titleColor: String): Service
+        {
+            val service = Service()
+            service.strId = strId
+            service.topImg = topImg
+            service.title = title
+            service.titleColor = titleColor
+            return service
+        }
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
-    private Long id;
+    var id: Long = 0
+
     @Column(nullable = false, unique = true)
-    private String strId;
-    @Column
-    private String topImg;
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    var strId: String = ""
 
     @Column
-    private String title;
+    var topImg: URL? = null
 
-    public Long getId()
-    {
-        return id;
-    }
+    @Column
+    var title: String = ""
 
-    public void setId(Long id)
-    {
-        this.id = id;
-    }
-
-    public String getStrId()
-    {
-        return strId;
-    }
-
-    public void setStrId(String strId)
-    {
-        this.strId = strId;
-    }
-
-    public String getTopImg()
-    {
-        return topImg;
-    }
-
-    public void setTopImg(String topUrl)
-    {
-        this.topImg = topUrl;
-    }
+    @Column
+    var titleColor: String = ""
 }

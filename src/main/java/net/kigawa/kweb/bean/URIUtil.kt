@@ -1,45 +1,44 @@
-package net.kigawa.kweb.bean;
+package net.kigawa.kweb.bean
 
-import net.kigawa.kweb.Kweb;
-import net.kigawa.kweb.entity.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
-import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder
+import java.net.MalformedURLException
+import java.net.URL
+import javax.servlet.http.HttpServletRequest
 
-import javax.servlet.http.HttpServletRequest;
-
-public class URIUtil
+class URIUtil(private val request: HttpServletRequest, private val handlerMapping: RequestMappingHandlerMapping)
 {
-    private final HttpServletRequest request;
-    private final RequestMappingHandlerMapping handlerMapping;
-
-    public URIUtil(HttpServletRequest request, RequestMappingHandlerMapping handlerMapping) {
-        this.request = request;
-        this.handlerMapping = handlerMapping;
-    }
-
-    public String urlFromPath(String path) {
-        return ServletUriComponentsBuilder
+    fun urlFromPath(path: String?): URL
+    {
+        return try
+        {
+            URL(ServletUriComponentsBuilder
                 .fromRequestUri(request)
                 .replacePath(path)
-                .encode().build().toUriString();
+                .encode().build().toUriString())
+        } catch (e: MalformedURLException)
+        {
+            throw RuntimeException(e)
+        }
     }
 
-    public String urlFromMapping(String requestMapName, Object... args) {
-        var builder = MvcUriComponentsBuilder
-                .fromMappingName(requestMapName);
-        return builder.build();
+    fun urlFromMapping(requestMapName: String, vararg args: Any?): String
+    {
+        val builder = MvcUriComponentsBuilder
+            .fromMappingName(requestMapName)
+        return builder.build()
     }
 
-    public String getUrlTemplate(String requestMapName, Object... args) {
-        var methods = handlerMapping.getHandlerMethodsForMappingName(requestMapName);
-        if (methods == null || methods.size() == 0) throw new RuntimeException("mapping not found");
-        var annotation = methods.get(0).getMethodAnnotation(RequestMapping.class);
-        if (annotation == null) throw new RuntimeException("annotation not found");
-        var values = annotation.value();
-        if (values.length == 0) throw new RuntimeException("rout not found");
-        return values[0];
+    fun getUrlTemplate(requestMapName: String, vararg args: Any?): String
+    {
+        val methods = handlerMapping.getHandlerMethodsForMappingName(requestMapName)
+        if (methods == null || methods.size == 0) throw RuntimeException("mapping not found")
+        val annotation = methods[0].getMethodAnnotation(RequestMapping::class.java)
+            ?: throw RuntimeException("annotation not found")
+        val values: Array<String> = annotation.value
+        if (values.isEmpty()) throw RuntimeException("rout not found")
+        return values[0]
     }
-
 }

@@ -22,7 +22,7 @@ export function initImages(): Images {
 }
 
 export interface ServiceList {
-    serviceList:  Service[]
+    serviceList: Service[]
 }
 
 export function initServiceList(): ServiceList {
@@ -34,6 +34,7 @@ export function initServiceList(): ServiceList {
 export interface Service {
     topImg: string
     title: string
+    titleColor: string
     strId: string
 }
 
@@ -41,6 +42,7 @@ export function initService(): Service {
     return {
         topImg: "",
         title: "",
+        titleColor: "",
         strId: "",
     }
 }
