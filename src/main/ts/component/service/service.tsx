@@ -8,13 +8,17 @@ interface Prop {
 
 export function Service(prop: Prop) {
     const service = useService(prop.strId)
+    const theme = useTheme()
 
-    return <div className={useTheme().bg_back+" pt-40"}
-                style={{backgroundImage: "url(" + service.topImg + ")"}}>
-        <div className={""}>
-            <h1 className={
-                "mb-16 w-full text-7xl text-center" + useTheme().text_accent
-            }>{service.title}</h1>
+    return <div className="" style={{backgroundColor: theme.bg}}>
+        <div className={" pt-60 h-160"} style={{backgroundImage: "url(" + service.topImg + ")"}}>
+            <div className={" mx-auto w-min p-1"} style={{backgroundColor: theme.bg}}>
+                <div className={" px-10 p-2 border-4"}>
+                    <h1 className={" text-7xl text-center"} style={{color: service.titleColor}}>
+                        {service.title}
+                    </h1>
+                </div>
+            </div>
         </div>
     </div>
 }

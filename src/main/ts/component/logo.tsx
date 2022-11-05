@@ -8,11 +8,9 @@ interface Prop {
 }
 
 export function Logo(props: Prop) {
-    return <div className={
-        useTheme().text_accent
-        + " text-center w-32"
-        + " text-xl"
-    }>
+    const theme = useTheme()
+    return <div className={" text-center w-32 text-xl"}
+                style={{color: theme.text_accent}}>
         <Link to={Pages.top}>{siteName}</Link>
     </div>
 }

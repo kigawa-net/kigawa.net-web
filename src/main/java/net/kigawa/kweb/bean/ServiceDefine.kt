@@ -1,23 +1,21 @@
 package net.kigawa.kweb.bean
 
-import net.kigawa.kweb.Kweb
 import net.kigawa.kweb.entity.Service
-import java.util.function.Consumer
+import java.util.function.Supplier
 
 class ServiceDefine(private val uriUtil: URIUtil)
 {
-    private val serviceMap: MutableMap<String, Consumer<Service>> = mutableMapOf()
+    private val serviceMap: MutableMap<String, Supplier<Service>> = mutableMapOf()
 
 
     init
     {
         addService("top") {
-            it.topImg = uriUtil.urlFromPath("/img/home-top.png")
-            it.title = Kweb.SERVICE_NAME
+            Service.create(uriUtil.urlFromPath("/img/home-top.png"), "kigawa.net")
         }
     }
 
-    private fun addService(strId: String, createService: Consumer<Service>)
+    private fun addService(strId: String, createService: Supplier<Service>)
     {
         synchronized(serviceMap) {
             serviceMap[strId] = createService
@@ -26,8 +24,7 @@ class ServiceDefine(private val uriUtil: URIUtil)
 
     fun getService(strId: String): Service?
     {
-        val service = Service()
-        synchronized(serviceMap) { serviceMap[strId] }?.accept(service) ?: return null
+        val service = synchronized(serviceMap) { serviceMap[strId] }?.get() ?: return null
         service.strId = strId
         return service
     }
@@ -44,9 +41,8 @@ class ServiceDefine(private val uriUtil: URIUtil)
         val services = synchronized(serviceMap) { LinkedHashMap(serviceMap) }
 
         services.forEach {
-            val service = Service()
+            val service = it.value.get()
             service.strId = it.key
-            it.value.accept(service)
             result[it.key] = service
         }
         return result
