@@ -10,7 +10,7 @@ interface Prop {
 export function Logo(props: Prop) {
     const theme = useTheme()
     return <div className={" text-center w-32 text-xl"}
-                style={{color: theme.text_accent}}>
+                style={{color: theme.reverse}}>
         <Link to={Pages.top}>{siteName}</Link>
     </div>
 }

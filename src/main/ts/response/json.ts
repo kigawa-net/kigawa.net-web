@@ -36,6 +36,7 @@ export interface Service {
     title: string
     titleColor: string
     strId: string
+    description: string
 }
 
 export function initService(): Service {
@@ -44,5 +45,6 @@ export function initService(): Service {
         title: "",
         titleColor: "",
         strId: "",
+        description: "",
     }
 }

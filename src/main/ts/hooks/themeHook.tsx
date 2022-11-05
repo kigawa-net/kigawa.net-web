@@ -2,13 +2,12 @@ import React, {Context, useContext, useState} from "react";
 
 export const themes: ThemeHook[] = [
     {
-        bg_accent: " yellowgreen",
-        bg_accent_sub: " olivedrab",
-        bg: " whitesmoke",
-        bg_element: " lightgray",
-        text_accent: "darkgreen",
-        text_main: "darkgreen",
-        text_sub: "gray",
+        accent: "#c7dc68",
+        accent2: "#c3d825",
+        accent3: "olivedrab",
+        base: "whitesmoke",
+        base_text: "darkgreen",
+        reverse: "darkgreen",
     },
 ]
 
@@ -17,13 +16,12 @@ let setThemeFunc: (theme: ThemeHook) => void = () => {
 }
 
 export interface ThemeHook {
-    bg_accent: string
-    bg_accent_sub: string
-    bg: string
-    bg_element: string
-    text_accent: string
-    text_main: string
-    text_sub: string
+    accent: string
+    accent2: string
+    accent3: string
+    base: string
+    base_text: string
+    reverse: string
 }
 
 
@@ -32,7 +30,7 @@ export function ThemeProvider(props: any) {
     setThemeFunc = setState
 
     return <ThemeContext.Provider value={theme}>
-        <div style={{color: theme.text_main, backgroundColor: theme.bg}}>
+        <div style={{color: theme.base_text, backgroundColor: theme.base}}>
             {props.children}
         </div>
     </ThemeContext.Provider>

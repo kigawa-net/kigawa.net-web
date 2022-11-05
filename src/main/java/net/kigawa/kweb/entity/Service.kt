@@ -31,4 +31,6 @@ class Service
 
     @Column
     var title: String = ""
+    @Column
+    var description: String = ""
 }
