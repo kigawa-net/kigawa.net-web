@@ -11,7 +11,7 @@ export function Top(props: Prop) {
 
     return <div className={""} style={{backgroundColor: theme.base}}>
         <div className={"pb-1"}>
-            <img src={useService("top").topImg} className={""}/>
+            <img src={useService("top").topImg} className={""} alt={"top img"}/>
             <p className={"mt-16 mb-16 w-full text-5xl text-center"}
                style={{color: theme.reverse}}>{siteName}</p>
         </div>

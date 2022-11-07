@@ -18,7 +18,7 @@ export function Header(props: Prop) {
         </div>
 
         <Link to={Pages.service}>
-            <ButtonFrame inClass={"w-32 text-lg"} removePadding>
+            <ButtonFrame inClass={"text-lg px-2"} removePadding>
                 <p>services</p>
             </ButtonFrame>
         </Link>

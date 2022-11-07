@@ -24,11 +24,11 @@ class URIUtil(private val request: HttpServletRequest, private val handlerMappin
         }
     }
 
-    fun urlFromMapping(requestMapName: String, vararg args: Any?): String
+    fun urlFromMapping(requestMapName: String, vararg args: Any?): URL
     {
         val builder = MvcUriComponentsBuilder
             .fromMappingName(requestMapName)
-        return builder.build()
+        return urlFromPath(builder.build())
     }
 
     fun getUrlTemplate(requestMapName: String, vararg args: Any?): String

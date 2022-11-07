@@ -11,7 +11,8 @@ class ServiceDefine(private val uriUtil: URIUtil)
     init
     {
         addService("top") {
-            Service.create(uriUtil.urlFromPath("/img/home-top.png"), "kigawa.net")
+            Service.create(uriUtil.urlFromPath("/img/home-top.png"), "kigawa.net", "top",
+                "kigawa.net homepage")
         }
     }
 

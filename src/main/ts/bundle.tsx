@@ -7,7 +7,7 @@ import {RootJsonProvider} from "./hooks/rootJsonHook";
 import {Contents} from "./component/contents";
 
 export const siteName = "kigawa.net"
-export const debug=true
+export const debug = true
 
 
 function Bundle() {

@@ -1,9 +1,11 @@
-export type Url = string
+export  type UrlTemplate = string
+export type UrlString = string
 
 export interface Root {
-    imageList: Url
-    serviceList: Url
-    service: Url
+    imageList: UrlString
+    serviceList: UrlString
+    service: UrlTemplate
+    themeUrl: UrlString
 }
 
 export function initRoot(): Root {
@@ -11,6 +13,7 @@ export function initRoot(): Root {
         imageList: "",
         serviceList: "",
         service: "",
+        themeUrl: "",
     }
 }
 
@@ -32,7 +35,7 @@ export function initServiceList(): ServiceList {
 }
 
 export interface Service {
-    topImg: string
+    topImg: UrlString
     title: string
     titleColor: string
     strId: string
@@ -46,5 +49,25 @@ export function initService(): Service {
         titleColor: "",
         strId: "",
         description: "",
+    }
+}
+
+export interface Theme {
+    accent: string
+    accent2: string
+    accent3: string
+    base: string
+    baseText: string
+    reverse: string
+}
+
+export function initTheme(): Theme {
+    return {
+        accent: "#c7dc68",
+        accent2: "#c3d825",
+        accent3: "olivedrab",
+        base: "#dcdcdc",
+        baseText: "darkgreen",
+        reverse: "darkgreen",
     }
 }

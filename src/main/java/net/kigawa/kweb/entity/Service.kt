@@ -8,12 +8,13 @@ class Service
 {
     companion object
     {
-        fun create(topImg: URL, title: String, strId: String = ""): Service
+        fun create(topImg: URL, title: String, strId: String, description: String): Service
         {
             val service = Service()
             service.strId = strId
             service.topImg = topImg
             service.title = title
+            service.description = description
             return service
         }
     }
@@ -31,6 +32,7 @@ class Service
 
     @Column
     var title: String = ""
+
     @Column
     var description: String = ""
 }
