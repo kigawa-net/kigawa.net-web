@@ -1,5 +1,4 @@
 import React from "react";
-import {initService, initTheme} from "../../response/json";
 import {BlockFrame} from "../util/elements";
 import {useService} from "../../hooks/serviceHook";
 import {useTheme} from "../../hooks/themeHook";
@@ -9,11 +8,8 @@ interface Prop {
 }
 
 export function Service(prop: Prop) {
-    console.log("service")
     const service = useService(prop.strId)
-    // const service = initService()
-    // const theme = useTheme()
-    const theme = initTheme()
+    const theme = useTheme()
 
 
     return <div className="" style={{backgroundColor: theme.base}}>

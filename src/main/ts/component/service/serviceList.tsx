@@ -3,7 +3,7 @@ import {useJson} from "../../hooks/jsonHook";
 import {useRootJson} from "../../hooks/rootJsonHook";
 import {initServiceList} from "../../response/json";
 import {useTheme} from "../../hooks/themeHook";
-import {BlockFrame, ButtonFrame} from "../util/elements";
+import {ButtonFrame} from "../util/elements";
 
 interface Prop {
 }
@@ -16,7 +16,7 @@ export function ServiceList(prop: Prop) {
     for (const service of services.serviceList) {
         elements.push(
             <ButtonFrame inClass={"w-48 h-48"} outClass={"m-5"} key={service.strId}
-                        inStyle={{borderColor: theme.accent3}}>
+                         inStyle={{borderColor: theme.accent3}}>
                 <h2 className={"text-center my-auto text-xl"}>
                     {service.title}
                 </h2>

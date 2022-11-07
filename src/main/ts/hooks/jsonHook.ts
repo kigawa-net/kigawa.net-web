@@ -4,8 +4,8 @@ import {useEffect, useState} from "react";
 import {debug} from "../bundle";
 
 export function fetchJson<T = any>(url: URL | UrlString, setState: (state: any) => void, defaultValue: T | (() => T)) {
+    if (!(url instanceof URL)) url = createURL(url)
     if (url == undefined) return getValue(defaultValue)
-    url = createURL(url)
     const currentUrl = createURL(window.location.href)
 
     if (url.host == currentUrl.host) {
@@ -30,14 +30,15 @@ export function fetchJson<T = any>(url: URL | UrlString, setState: (state: any) 
 }
 
 export function useJson<T = any>(url: URL | UrlString, defaultValue: T | (() => T)): T {
-    if (url == undefined) return getValue(defaultValue)
-    if (!(url instanceof URL)) url = createURL(url)
     const [restObj, setObj] = useState<T>()
+    if (!(url instanceof URL)) url = createURL(url)
+    let strUrl = url == undefined ? "" : url.href
 
     useEffect(() => {
-        if (!url) return
+        if (url == undefined) return
+
         fetchJson<T>(url, setObj, defaultValue)
-    }, [url.href, setObj])
+    }, [strUrl, setObj])
 
     if (restObj) return restObj
 
