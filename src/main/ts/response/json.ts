@@ -59,15 +59,23 @@ export interface Theme {
     base: string
     baseText: string
     reverse: string
+    fonts: Font[]
 }
 
 export function initTheme(): Theme {
     return {
-        accent: "#c7dc68",
-        accent2: "#c3d825",
-        accent3: "olivedrab",
-        base: "#dcdcdc",
-        baseText: "darkgreen",
-        reverse: "darkgreen",
+        accent: "", accent2: "", accent3: "", base: "", baseText: "", fonts: [], reverse: ""
+    }
+}
+
+export interface Font {
+    name: string
+    url: UrlString
+}
+
+export function initFont(): Font {
+    return {
+        name: "",
+        url: "",
     }
 }

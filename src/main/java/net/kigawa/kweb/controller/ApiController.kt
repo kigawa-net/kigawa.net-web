@@ -1,5 +1,6 @@
 package net.kigawa.kweb.controller
 
+import net.kigawa.kweb.bean.Preset
 import net.kigawa.kweb.bean.URIUtil
 import net.kigawa.kweb.entity.Theme
 import net.kigawa.kweb.response.ImageList
@@ -10,11 +11,10 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController()
 @RequestMapping(value = ["/api"])
-class ApiController @Autowired constructor(private val uriUtil: URIUtil)
-{
+class ApiController @Autowired constructor(private val uriUtil: URIUtil,
+                                           private val preset: Preset) {
     @RequestMapping(value = [""], name = "root")
-    fun root(): Root
-    {
+    fun root(): Root {
         return Root(
             uriUtil.urlFromMapping("imageList"),
             uriUtil.urlFromMapping("serviceList"),
@@ -24,15 +24,12 @@ class ApiController @Autowired constructor(private val uriUtil: URIUtil)
     }
 
     @RequestMapping(value = ["/api/theme"], name = "theme")
-    fun theme(): Theme
-    {
-        return Theme("#c7dc68", "#c3d825", "olivedrab", "#dcdcdc",
-            "darkgreen", "darkgreen")
+    fun theme(): Theme {
+        return preset.themes.get(Preset.THEME_MAIN)!!
     }
 
     @RequestMapping(value = ["/images"], name = "imageList")
-    fun imageList(): ImageList
-    {
+    fun imageList(): ImageList {
         return ImageList(
             uriUtil.urlFromPath("/img/home-top.png")
         )

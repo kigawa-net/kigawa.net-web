@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest
 
 class URIUtil(private val request: HttpServletRequest, private val handlerMapping: RequestMappingHandlerMapping)
 {
-    fun urlFromPath(path: String?): URL
+    fun urlFromPath(path: String): URL
     {
         return try
         {

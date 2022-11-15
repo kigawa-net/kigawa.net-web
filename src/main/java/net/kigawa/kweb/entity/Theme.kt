@@ -7,6 +7,6 @@ class Theme(
     val base: String,
     val baseText: String,
     val reverse: String,
-)
-{
+    val fonts: MutableList<Font>,
+) {
 }

@@ -1,6 +1,6 @@
 package net.kigawa.kweb.controller;
 
-import net.kigawa.kweb.bean.ServiceDefine;
+import net.kigawa.kweb.bean.Preset;
 import net.kigawa.kweb.bean.URIUtil;
 import net.kigawa.kweb.entity.Service;
 import net.kigawa.kweb.repository.ServiceRepository;
@@ -17,34 +17,31 @@ public class ServiceController
 {
     private final ServiceRepository serviceRepository;
     private final URIUtil uriUtil;
-    private final ServiceDefine serviceDefine;
+    private final Preset preset;
 
     @Autowired
-    public ServiceController(ServiceRepository serviceRepository, URIUtil uriUtil, ServiceDefine serviceDefine)
-    {
+    public ServiceController(ServiceRepository serviceRepository, URIUtil uriUtil, Preset preset) {
         this.serviceRepository = serviceRepository;
         this.uriUtil = uriUtil;
-        this.serviceDefine = serviceDefine;
+        this.preset = preset;
     }
 
     @RequestMapping(value = "/api/services", name = "serviceList")
-    public ServiceList serviceList()
-    {
+    public ServiceList serviceList() {
         var list = new LinkedList<Service>();
 
         for (var service : serviceRepository.findAll()) {
-            list.add( service);
+            list.add(service);
         }
 
-        list.addAll(serviceDefine.getServiceList());
+        list.addAll(preset.getServices().getMap().values());
 
         return new ServiceList(list);
     }
 
     @RequestMapping(value = "/api/service/{strId}", name = "service")
-    public Service service(@PathVariable String strId)
-    {
-        var service = serviceDefine.getService(strId);
+    public Service service(@PathVariable String strId) {
+        var service = preset.getServices().get(strId);
         if (service != null) return service;
 
         for (var service1 : serviceRepository.findAll()) {

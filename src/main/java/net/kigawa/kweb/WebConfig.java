@@ -1,6 +1,6 @@
 package net.kigawa.kweb;
 
-import net.kigawa.kweb.bean.ServiceDefine;
+import net.kigawa.kweb.bean.Preset;
 import net.kigawa.kweb.bean.URIUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -21,7 +21,7 @@ public class WebConfig implements WebMvcConfigurer
 
     @Bean
     @Autowired
-    public ServiceDefine serviceDefine(URIUtil uriUtil) {
-        return new ServiceDefine(uriUtil);
+    public Preset serviceDefine(URIUtil uriUtil) {
+        return new Preset(uriUtil);
     }
 }
