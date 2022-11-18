@@ -48,6 +48,6 @@ public class ServiceController
             if (service1.getStrId().equals(strId)) return service1;
         }
 
-        return new Service();
+        return null;
     }
 }

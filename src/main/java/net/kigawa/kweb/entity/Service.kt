@@ -4,17 +4,14 @@ import java.net.URL
 import javax.persistence.*
 
 @Entity
-class Service
-{
-    companion object
-    {
-        fun create(topImg: URL, title: String, strId: String, description: String): Service
-        {
+open class Service protected constructor(){
+    companion object {
+        fun create(topImg: URL, title: String, strId: String, subtitle: String): Service {
             val service = Service()
             service.strId = strId
             service.topImg = topImg
             service.title = title
-            service.description = description
+            service.subtitle = subtitle
             return service
         }
     }
@@ -34,5 +31,5 @@ class Service
     var title: String = ""
 
     @Column
-    var description: String = ""
+    var subtitle: String = ""
 }

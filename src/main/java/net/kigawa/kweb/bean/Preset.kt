@@ -20,11 +20,16 @@ class Preset(private val uriUtil: URIUtil) {
 
     init {
         services.add(SERVICE_TOP) {
-            Service.create(uriUtil.urlFromPath("/img/home-top.png"), "kigawa.net", "top",
-                           "kigawa.net homepage")
+            Service.create(
+                uriUtil.urlFromPath("/img/home-top.png"), "kigawa.net", "top",
+                "kigawa.net homepage"
+            )
         }
         fonts.add(FONT_JETBRAINS) {
-            Font("jetbrains", uriUtil.urlFromPath("/font/JetBrainsMono-2.242/fonts/webfonts/JetBrainsMono-Light.woff2"))
+            Font(
+                "jetbrains",
+                uriUtil.urlFromPath("/font/JetBrainsMono-2.242/fonts/webfonts/JetBrainsMono-Light.woff2")
+            )
         }
         fonts.add(FONT_HANNARI) {
             Font(FONT_HANNARI, uriUtil.urlFromPath("/font/hannari/HannariMincho-Regular.otf"))

@@ -15,14 +15,21 @@ export function ServiceList(prop: Prop) {
 
     for (const service of services.serviceList) {
         elements.push(
-            <ButtonFrame inClass={"w-48 h-48"} outClass={"m-5"} key={service.strId}
-                         inStyle={{borderColor: theme.accent3}}>
-                <h2 className={"text-center my-auto text-xl"}>
-                    {service.title}
-                </h2>
+            <ButtonFrame inClass={"h-48 flex items-center"} outClass={"m-5"}
+                         inWidthClass={"w-60"}
+                         key={service.strId} inStyle={{borderColor: theme.accent3}}>
+                <div className={"w-full"}>
+                    <h2 className={"text-center text-xl"}>
+                        {service.title}
+                    </h2>
+                    <p className={"text-center"}>
+                        {service.subtitle}
+                    </p>
+                </div>
             </ButtonFrame>
         )
     }
+
 
     return <div className={" max-w-4xl mx-auto"}>
         <h1 style={{color: theme.reverse}}

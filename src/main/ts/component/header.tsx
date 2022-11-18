@@ -11,14 +11,15 @@ interface Prop {
 export function Header(props: Prop) {
     const theme = useTheme()
 
-    return <div className={"pt-1 bg-opacity-70 h-10 flex text-center"}
+    return <div className={"pb-1 h-10 flex text-center"}
                 style={{backgroundColor: theme.accent}}>
-        <div className={"mr-16"}>
+        <div className={"mr-16 mt-auto"}>
             <Logo/>
         </div>
 
-        <Link to={Pages.service}>
-            <ButtonFrame inClass={"text-lg px-2"} removePadding>
+        <Link to={Pages.service} className={"mt-auto"}>
+            <ButtonFrame outClass={"pb-0"} inClass={"text-md px-2"}
+                         frameColor={"#00000000"} backColor={""} removePadding>
                 <p>services</p>
             </ButtonFrame>
         </Link>

@@ -13,20 +13,21 @@ export function Service(prop: Prop) {
 
 
     return <div className="" style={{backgroundColor: theme.base}}>
-        <div className={" pt-60 h-160"} style={{backgroundImage: "url(" + service.topImg + ")"}}>
-            <BlockFrame inClass={"px-10"}
-                        outClass={"mx-auto"} outWidthClass={"w-2/4"}>
-                <h1 className={" text-7xl text-center"} style={{color: service.titleColor}}>
-                    {service.title}
-                </h1>
-            </BlockFrame>
-            <BlockFrame inClass={"px-10"}
-                        outClass={"mt-2 mx-auto"} outWidthClass={"w-1/3"}
-                        backColor={theme.base} frameColor={theme.accent}>
-                <h2 className={"text-2xl text-center"}>
-                    {service.description}
-                </h2>
-            </BlockFrame>
+        <div className={"h-160 flex items-center"} style={{backgroundImage: "url(" + service.topImg + ")"}}>
+            <div className={"w-full"}>
+                <BlockFrame inClass={"px-10"} outClass={"mx-auto"} outWidthClass={"w-2/4"}>
+                    <h1 className={"text-7xl text-center"} style={{color: service.titleColor}}>
+                        {service.title}
+                    </h1>
+                </BlockFrame>
+                <BlockFrame inClass={"px-10"}
+                            outClass={"mt-2 mx-auto"} outWidthClass={"w-1/3"}
+                            backColor={theme.base} frameColor={theme.accent}>
+                    <h2 className={"text-2xl text-center"}>
+                        {service.subtitle}
+                    </h2>
+                </BlockFrame>
+            </div>
         </div>
     </div>
 }
