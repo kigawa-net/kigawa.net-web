@@ -8,35 +8,31 @@ import java.net.MalformedURLException
 import java.net.URL
 import javax.servlet.http.HttpServletRequest
 
-class URIUtil(private val request: HttpServletRequest, private val handlerMapping: RequestMappingHandlerMapping)
-{
-    fun urlFromPath(path: String): URL
-    {
-        return try
-        {
-            URL(ServletUriComponentsBuilder
-                .fromRequestUri(request)
-                .replacePath(path)
-                .encode().build().toUriString())
-        } catch (e: MalformedURLException)
-        {
+class URIUtil(private val request: HttpServletRequest, private val handlerMapping: RequestMappingHandlerMapping) {
+    fun urlFromPath(path: String): URL {
+        return try {
+            URL(
+                ServletUriComponentsBuilder
+                    .fromRequestUri(request)
+                    .replacePath(path)
+                    .encode().build().toUriString()
+            )
+        } catch (e: MalformedURLException) {
             throw RuntimeException(e)
         }
     }
-
-    fun urlFromMapping(requestMapName: String, vararg args: Any?): URL
-    {
+    
+    fun urlFromMapping(requestMapName: String, vararg args: Any?): URL {
         val builder = MvcUriComponentsBuilder
             .fromMappingName(requestMapName)
-        return urlFromPath(builder.build())
+        return urlFromPath(builder.buildAndExpand(args))
     }
-
-    fun getUrlTemplate(requestMapName: String, vararg args: Any?): String
-    {
+    
+    fun getUrlTemplate(requestMapName: String): String {
         val methods = handlerMapping.getHandlerMethodsForMappingName(requestMapName)
         if (methods == null || methods.size == 0) throw RuntimeException("mapping not found")
         val annotation = methods[0].getMethodAnnotation(RequestMapping::class.java)
-            ?: throw RuntimeException("annotation not found")
+                         ?: throw RuntimeException("annotation not found")
         val values: Array<String> = annotation.value
         if (values.isEmpty()) throw RuntimeException("rout not found")
         return values[0]

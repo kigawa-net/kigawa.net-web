@@ -1,10 +1,11 @@
 package net.kigawa.kweb.entity
 
 import java.net.URL
-import javax.persistence.*
+import javax.persistence.Column
+import javax.persistence.Entity
 
 @Entity
-open class Service protected constructor() {
+open class Service protected constructor(): AbstractEntity() {
     companion object {
         fun create(topImg: URL, title: String, strId: String, subtitle: String): Service {
             val service = Service()
@@ -15,21 +16,16 @@ open class Service protected constructor() {
             return service
         }
     }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false)
-    open var id: Long = 0
-
+    
     @Column(nullable = false, unique = true)
     open var strId: String = ""
-
+    
     @Column
     open lateinit var topImg: URL
-
+    
     @Column
     open var title: String = ""
-
+    
     @Column
     open var subtitle: String = ""
 }
