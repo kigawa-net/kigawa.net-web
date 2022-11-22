@@ -1,5 +1,6 @@
 import {useTheme} from "../../hooks/themeHook";
 import React, {CSSProperties} from "react";
+import {getDefault} from "../../util/util";
 
 interface Props {
     inStyle?: CSSProperties | undefined
@@ -39,14 +40,6 @@ export function BlockFrame(props: Props) {
             {props.children}
         </div>
     </div>
-}
-
-function getDefault<T>(prop: T | undefined, defaultValue: T): T {
-    let value = prop
-    if (value == undefined) {
-        value = defaultValue
-    }
-    return value
 }
 
 export function ButtonFrame(props: Props) {

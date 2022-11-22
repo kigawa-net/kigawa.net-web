@@ -29,6 +29,7 @@ export function fetchJson<T = any>(url: URL | UrlString, setState: (state: any) 
         })
 }
 
+
 export function useJson<T = any>(url: URL | UrlString, defaultValue: T | (() => T)): T {
     const [restObj, setObj] = useState<T>()
     if (!(url instanceof URL)) url = createURL(url)

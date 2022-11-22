@@ -2,6 +2,7 @@ import React from "react";
 import {BlockFrame} from "../util/elements";
 import {useService} from "../../hooks/serviceHook";
 import {useTheme} from "../../hooks/themeHook";
+import {debug} from "../../bundle";
 
 interface Prop {
     strId: string
@@ -11,9 +12,8 @@ export function Service(prop: Prop) {
     const service = useService(prop.strId)
     const theme = useTheme()
 
-
     return <div className="" style={{backgroundColor: theme.thinTheme}}>
-        <div className={"h-160 flex items-center"} style={{backgroundImage: "url(" + service.topImg + ")"}}>
+        <div className={"h-200 flex items-center"} style={{backgroundImage: "url(" + service.topImg + ")"}}>
             <div className={"w-full"}>
                 <BlockFrame inClass={"px-10"} outClass={"mx-auto"} outWidthClass={"w-2/4"}>
                     <h1 className={"text-7xl text-center"} style={{color: service.titleColor}}>
@@ -31,3 +31,4 @@ export function Service(prop: Prop) {
         </div>
     </div>
 }
+

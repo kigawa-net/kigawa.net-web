@@ -11,8 +11,8 @@ export interface Root {
 export function initRoot(): Root {
     return {
         imageList: "",
-        serviceList: "",
         service: "",
+        serviceList: "",
         themeUrl: "",
     }
 }

@@ -2,11 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: "test";
-  src: url(http://127.0.0.1:8080/font/JetBrainsMono-2.242/fonts/webfonts/JetBrainsMono-Light.woff2);
+.h-160 {
+  height: 40rem;
 }
 
-.h-160{
-  height: 40rem;
+.h-240 {
+  height: 60rem;
+}
+.h-200 {
+  height: 50rem;
 }

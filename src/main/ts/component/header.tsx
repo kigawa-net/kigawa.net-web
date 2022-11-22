@@ -17,7 +17,7 @@ export function Header(props: Prop) {
             <Logo/>
         </div>
 
-        <Link to={Pages.service} className={"mt-auto"}>
+        <Link to={Pages.serviceList} className={"mt-auto"}>
             <ButtonFrame outClass={"pb-0"} inClass={"text-md px-2"}
                          frameColor={"#00000000"} backColor={""} removePadding>
                 <p>services</p>

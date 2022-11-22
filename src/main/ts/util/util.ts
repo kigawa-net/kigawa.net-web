@@ -1,8 +1,13 @@
 import {UrlString, UrlTemplate} from "../response/json";
 
-export function mapUrl(urlTemplate: UrlTemplate, key: string, value: string): URL {
+export function mapSpringUrl(urlTemplate: UrlTemplate, key: string, value: string): URL {
     if (urlTemplate == undefined) return null
     return createURL(urlTemplate.replace("{" + key + "}", value))
+}
+
+export function mapReactUrl(urlTemplate: UrlTemplate, key: string, value: string): URL {
+    if (urlTemplate == undefined) return null
+    return createURL(urlTemplate.replace(":" + key, value))
 }
 
 export function createURL(url: URL | UrlString | string) {
@@ -19,4 +24,12 @@ export function createURL(url: URL | UrlString | string) {
 
 export function getValue<T>(value: T | (() => T)) {
     return value instanceof Function ? value() : value
+}
+
+export function getDefault<T>(prop: T | undefined, defaultValue: T): T {
+    let value = prop
+    if (value == undefined) {
+        value = defaultValue
+    }
+    return value
 }
