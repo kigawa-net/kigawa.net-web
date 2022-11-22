@@ -53,18 +53,27 @@ export function initService(): Service {
 }
 
 export interface Theme {
+    thinTheme: string
+    theme1: string
+    theme2: string
+    theme3: string
     accent: string
-    accent2: string
-    accent3: string
-    base: string
+    plain: string
     baseText: string
-    reverse: string
     fonts: Font[]
 }
 
+
 export function initTheme(): Theme {
     return {
-        accent: "", accent2: "", accent3: "", base: "", baseText: "", fonts: [], reverse: ""
+        thinTheme: "",
+        theme1: "",
+        theme2: "",
+        theme3: "",
+        plain: "",
+        baseText: "",
+        fonts: [],
+        accent: ""
     }
 }
 

@@ -42,7 +42,7 @@ export function ThemeProvider(props: any) {
 
     return <ThemeContext.Provider value={nonNullTheme}>
         <div style={{
-            color: nonNullTheme.baseText, backgroundColor: nonNullTheme.base,
+            color: nonNullTheme.baseText, backgroundColor: nonNullTheme.thinTheme,
             fontFamily: font
         }}>
             {props.children}

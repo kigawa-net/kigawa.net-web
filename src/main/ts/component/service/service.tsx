@@ -12,7 +12,7 @@ export function Service(prop: Prop) {
     const theme = useTheme()
 
 
-    return <div className="" style={{backgroundColor: theme.base}}>
+    return <div className="" style={{backgroundColor: theme.thinTheme}}>
         <div className={"h-160 flex items-center"} style={{backgroundImage: "url(" + service.topImg + ")"}}>
             <div className={"w-full"}>
                 <BlockFrame inClass={"px-10"} outClass={"mx-auto"} outWidthClass={"w-2/4"}>
@@ -22,7 +22,7 @@ export function Service(prop: Prop) {
                 </BlockFrame>
                 <BlockFrame inClass={"px-10"}
                             outClass={"mt-2 mx-auto"} outWidthClass={"w-1/3"}
-                            backColor={theme.base} frameColor={theme.accent}>
+                            backColor={theme.thinTheme} frameColor={theme.theme1}>
                     <h2 className={"text-2xl text-center"}>
                         {service.subtitle}
                     </h2>

@@ -36,8 +36,13 @@ class Preset(private val uriUtil: URIUtil) {
         }
         themes.add(THEME_MAIN) {
             Theme(
-                "#c7dc68", "#c3d825", "olivedrab", "#dcdcdc",
-                "darkgreen", "darkgreen",
+                "#ecf2dc",
+                "#c7dc68",
+                "#c3d825",
+                "olivedrab",
+                "darkgreen",
+                "#dcdcdc",
+                "darkgreen",
                 mutableListOf(
                     fonts.get(FONT_JETBRAINS)!!,
                     fonts.get(FONT_HANNARI)!!,
@@ -45,7 +50,6 @@ class Preset(private val uriUtil: URIUtil) {
             )
         }
     }
-
 }
 
 class PresetMap<T>() {

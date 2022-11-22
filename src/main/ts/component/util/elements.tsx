@@ -18,10 +18,10 @@ export function BlockFrame(props: Props) {
     const theme = useTheme()
 
     const outStyle = getDefault(props.outStyle, {})
-    outStyle.backgroundColor = getDefault(props.backColor, theme.accent)
+    outStyle.backgroundColor = getDefault(props.backColor, theme.theme1)
 
     const inStyle = getDefault(props.inStyle, {})
-    inStyle.borderColor = getDefault(props.frameColor, theme.accent3)
+    inStyle.borderColor = getDefault(props.frameColor, theme.theme3)
 
     let inClass = getDefault(props.inClass, "")
     let outClass = getDefault(props.outClass, "")

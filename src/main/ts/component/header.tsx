@@ -12,7 +12,7 @@ export function Header(props: Prop) {
     const theme = useTheme()
 
     return <div className={"pb-1 h-10 flex text-center"}
-                style={{backgroundColor: theme.accent}}>
+                style={{backgroundColor: theme.theme1}}>
         <div className={"mr-16 mt-auto"}>
             <Logo/>
         </div>

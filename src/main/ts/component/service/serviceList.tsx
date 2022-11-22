@@ -17,7 +17,7 @@ export function ServiceList(prop: Prop) {
         elements.push(
             <ButtonFrame inClass={"h-48 flex items-center"} outClass={"m-5"}
                          inWidthClass={"w-60"}
-                         key={service.strId} inStyle={{borderColor: theme.accent3}}>
+                         key={service.strId} inStyle={{borderColor: theme.theme3}}>
                 <div className={"w-full"}>
                     <h2 className={"text-center text-xl"}>
                         {service.title}
@@ -32,7 +32,7 @@ export function ServiceList(prop: Prop) {
 
 
     return <div className={" max-w-4xl mx-auto"}>
-        <h1 style={{color: theme.reverse}}
+        <h1 style={{color: theme.accent}}
             className={" text-6xl text-center"}>services</h1>
         <div className={" flex"}>
             {elements}

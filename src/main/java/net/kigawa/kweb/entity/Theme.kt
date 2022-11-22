@@ -1,12 +1,13 @@
 package net.kigawa.kweb.entity
 
 class Theme(
+    val thinTheme: String,
+    val theme1: String,
+    val theme2: String,
+    val theme3: String,
     val accent: String,
-    val accent2: String,
-    val accent3: String,
-    val base: String,
+    val plain: String,
     val baseText: String,
-    val reverse: String,
     val fonts: MutableList<Font>,
 ) {
 }
