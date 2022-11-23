@@ -9,11 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
-@RestController()
+@RestController
 @RequestMapping(value = ["/api"])
 class ApiController @Autowired constructor(private val uriUtil: URIUtil,
                                            private val preset: Preset) {
-    @RequestMapping(value = [""], name = "root")
+    @RequestMapping(value = ["/"], name = "root")
     fun root(): Root {
         return Root(
             uriUtil.urlFromMapping("imageList"),
@@ -23,7 +23,7 @@ class ApiController @Autowired constructor(private val uriUtil: URIUtil,
         )
     }
 
-    @RequestMapping(value = ["/api/theme"], name = "theme")
+    @RequestMapping(value = ["/theme"], name = "theme")
     fun theme(): Theme {
         return preset.themes.get(Preset.THEME_MAIN)!!
     }
