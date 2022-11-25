@@ -5,9 +5,9 @@ export function mapSpringUrl(urlTemplate: UrlTemplate, key: string, value: strin
     return createURL(urlTemplate.replace("{" + key + "}", value))
 }
 
-export function mapReactUrl(urlTemplate: UrlTemplate, key: string, value: string): URL {
+export function mapReactPath(urlTemplate: UrlTemplate, key: string, value: string): string {
     if (urlTemplate == undefined) return null
-    return createURL(urlTemplate.replace(":" + key, value))
+    return urlTemplate.replace(":" + key, value)
 }
 
 export function createURL(url: URL | UrlString | string) {

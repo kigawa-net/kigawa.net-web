@@ -1,14 +1,10 @@
 import {Service} from "./service";
 import React from "react";
+import {useParams} from "react-router-dom";
 
 interface Props {
-    match?: {
-        params: {
-            id: string
-        }
-    }
 }
 
 export function ServicePage(props: Props) {
-    return <Service strId={props.match.params.id}/>
+    return <Service strId={useParams().id}/>
 }

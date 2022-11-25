@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController
 import java.util.*
 
 @RestController
-@RequestMapping(value = ["/api/services"])
+@RequestMapping(value = ["/api/service"])
 class ServiceController @Autowired constructor(
     private val serviceRepository: ServiceRepository,
     private val uriUtil: URIUtil,

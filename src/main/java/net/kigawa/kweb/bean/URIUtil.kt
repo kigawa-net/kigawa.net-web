@@ -13,7 +13,7 @@ class URIUtil(private val request: HttpServletRequest, private val handlerMappin
         return try {
             URL(
                 ServletUriComponentsBuilder
-                    .fromRequestUri(request)
+                    .fromCurrentRequest()
                     .replacePath(path)
                     .encode().build().toUriString()
             )
@@ -21,20 +21,32 @@ class URIUtil(private val request: HttpServletRequest, private val handlerMappin
             throw RuntimeException(e)
         }
     }
-    
+
     fun urlFromMapping(requestMapName: String, vararg args: Any?): URL {
         val builder = MvcUriComponentsBuilder
             .fromMappingName(requestMapName)
         return urlFromPath(builder.buildAndExpand(args))
     }
-    
+
     fun getUrlTemplate(requestMapName: String): String {
+        var path = "/"
         val methods = handlerMapping.getHandlerMethodsForMappingName(requestMapName)
         if (methods == null || methods.size == 0) throw RuntimeException("mapping not found")
-        val annotation = methods[0].getMethodAnnotation(RequestMapping::class.java)
-                         ?: throw RuntimeException("annotation not found")
-        val values: Array<String> = annotation.value
-        if (values.isEmpty()) throw RuntimeException("rout not found")
-        return values[0]
+        val method = methods[0]
+        val classAnnotation = method.beanType.getAnnotation(RequestMapping::class.java)
+        if (classAnnotation != null && classAnnotation.value.isNotEmpty()) {
+            var classPath = classAnnotation.value[0]
+            if (classPath.startsWith("/")) classPath = classPath.substring(1, classPath.length)
+            path += classPath
+        }
+
+        val annotation = method.getMethodAnnotation(RequestMapping::class.java)
+            ?: throw RuntimeException("annotation not found")
+        val methodValues: Array<String> = annotation.value
+        if (methodValues.isEmpty()) throw RuntimeException("rout not found")
+        var methodPath = methodValues[0]
+        if (methodPath.startsWith("/")) methodPath = methodPath.substring(1, methodPath.length)
+        if (path.endsWith("/")) path = path.substring(0, path.length - 1)
+        return "$path/$methodPath"
     }
 }

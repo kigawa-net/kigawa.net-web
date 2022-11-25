@@ -6,7 +6,7 @@ import {useTheme} from "../../hooks/themeHook";
 import {ButtonFrame} from "../util/elements";
 import {Link} from "react-router-dom";
 import {Pages} from "../contents";
-import {mapReactUrl} from "../../util/util";
+import {mapReactPath} from "../../util/util";
 
 interface Prop {
 }
@@ -18,7 +18,7 @@ export function ServiceList(prop: Prop) {
 
     for (const service of services.serviceList) {
         elements.push(
-            <Link to={mapReactUrl(Pages.service, "id", service.strId).href}
+            <Link to={mapReactPath(Pages.service, "id", service.strId)}
                   key={service.strId}>
                 <ButtonFrame inClass={"h-48 flex items-center"} outClass={"m-5"}
                              inWidthClass={"w-60"}
