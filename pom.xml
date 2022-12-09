@@ -22,7 +22,7 @@
         <url>https://github.com/kigawa-net/kweb</url>
         <version>1.0</version>
         <kotlin.version>1.7.20</kotlin.version>
-        <spring.version>2.7.4</spring.version>
+        <spring.version>3.0.0</spring.version>
 
 
         <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -41,6 +41,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-kotlin</artifactId>
+            <version>2.14.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -81,6 +82,16 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
             <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>4.2.1</version>
         </dependency>
     </dependencies>
 
