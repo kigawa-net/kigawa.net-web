@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping(value = ["/private-api"])
-class PrivateApiController @Autowired constructor(private val uriUtil: URIUtil,
-                                                  private val preset: Preset) {
+@RequestMapping(value = ["/api/admin"])
+class AdminController @Autowired constructor(private val uriUtil: URIUtil,
+                                             private val preset: Preset) {
     
 }

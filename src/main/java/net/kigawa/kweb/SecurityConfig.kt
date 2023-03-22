@@ -16,6 +16,8 @@ open class SecurityConfig: WebMvcConfigurer {
       .authorizeHttpRequests {
         it
           .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+          .mvcMatchers("/api/private").hasRole(Role.USER.id)
+          .mvcMatchers("/api/admin").hasRole(Role.ADMIN.id)
           .anyRequest().authenticated()
       }.build()
   }
